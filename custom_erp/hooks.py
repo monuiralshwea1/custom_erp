@@ -4,6 +4,20 @@ app_publisher = "moneer"
 app_description = "new testine app"
 app_email = "M777682260@gmail.com"
 app_license = "mit"
+
+
+
+fixtures = [
+    "Custom Field",
+    "Property Setter",
+    "Custom Script",
+    "Print Format",
+    "Report",
+    "Workflow",
+    "Workflow State",
+    "Workflow Action",
+]
+
 # required_apps = []
 
 # Includes in <head>
