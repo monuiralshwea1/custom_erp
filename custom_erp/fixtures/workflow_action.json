@@ -1,0 +1,380 @@
+[
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-15 03:42:40.400350",
+  "name": "2dbc0ca628",
+  "permitted_roles": [
+   {
+    "parent": "2dbc0ca628",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500013",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Rejected"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-15 03:42:53.254850",
+  "name": "6a949f60b5",
+  "permitted_roles": [
+   {
+    "parent": "6a949f60b5",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500013",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-15 03:43:08.564093",
+  "name": "7280d92671",
+  "permitted_roles": [
+   {
+    "parent": "7280d92671",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500013",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "onHold"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-15 03:53:27.216500",
+  "name": "f3e56a5fda",
+  "permitted_roles": [
+   {
+    "parent": "f3e56a5fda",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500007",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-15 03:53:38.563081",
+  "name": "c1e7bb8b35",
+  "permitted_roles": [
+   {
+    "parent": "c1e7bb8b35",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500007",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "onHold"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-15 23:45:28.342330",
+  "name": "63cf1018f5",
+  "permitted_roles": [
+   {
+    "parent": "63cf1018f5",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500014",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "new"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-16 02:55:58.500701",
+  "name": "765ab4748c",
+  "permitted_roles": [
+   {
+    "parent": "765ab4748c",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500005",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "nst@gmail.com",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-16 02:56:24.142222",
+  "name": "6386c9003a",
+  "permitted_roles": [
+   {
+    "parent": "6386c9003a",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500005",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "onHold"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-16 22:21:37.675899",
+  "name": "8bed04b463",
+  "permitted_roles": [
+   {
+    "parent": "8bed04b463",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500014",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-16 23:26:02.788051",
+  "name": "6f7882fdc4",
+  "permitted_roles": [
+   {
+    "parent": "6f7882fdc4",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500024",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "new"
+ },
+ {
+  "completed_by": "Administrator",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-16 23:26:26.011679",
+  "name": "c89d261bc7",
+  "permitted_roles": [
+   {
+    "parent": "c89d261bc7",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500024",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "nst@gmail.com",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-18 00:29:30.084312",
+  "name": "736c76acb9",
+  "permitted_roles": [
+   {
+    "parent": "736c76acb9",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500026",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "new"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-18 00:29:55.922248",
+  "name": "ab52bc6716",
+  "permitted_roles": [
+   {
+    "parent": "ab52bc6716",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500026",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-03-19 01:54:59.996728",
+  "name": "95cc968aa8",
+  "permitted_roles": [
+   {
+    "parent": "95cc968aa8",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "5500027",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "new"
+ },
+ {
+  "completed_by": "moneer@gmail.com",
+  "completed_by_role": "HR Manager",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-02-13 19:47:11.824711",
+  "name": "8c97124ba9",
+  "permitted_roles": [
+   {
+    "parent": "8c97124ba9",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "HR Manager"
+   }
+  ],
+  "reference_doctype": "Loan Application",
+  "reference_name": "ACC-LOAP-2024-00001",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "Pending"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-11-13 20:20:52.478357",
+  "name": "1fsc7457e4",
+  "permitted_roles": [
+   {
+    "parent": "1fsc7457e4",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "20000165",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Approved"
+ },
+ {
+  "completed_by": "moneer@gmail.com",
+  "completed_by_role": "All",
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-11-13 20:28:28.383949",
+  "name": "1karaffp94",
+  "permitted_roles": [
+   {
+    "parent": "1karaffp94",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "20000222",
+  "status": "Completed",
+  "user": null,
+  "workflow_state": "new"
+ },
+ {
+  "completed_by": null,
+  "completed_by_role": null,
+  "docstatus": 0,
+  "doctype": "Workflow Action",
+  "modified": "2024-11-13 20:28:42.261987",
+  "name": "1kf6seasaj",
+  "permitted_roles": [
+   {
+    "parent": "1kf6seasaj",
+    "parentfield": "permitted_roles",
+    "parenttype": "Workflow Action",
+    "role": "All"
+   }
+  ],
+  "reference_doctype": "Receipt Transfer",
+  "reference_name": "20000222",
+  "status": "Open",
+  "user": null,
+  "workflow_state": "Approved"
+ }
+]

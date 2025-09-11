@@ -1,0 +1,74 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-15 03:20:30.149554",
+  "name": "new",
+  "style": "",
+  "workflow_state_name": "new"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-15 03:51:06.468510",
+  "name": "canceled",
+  "style": "Danger",
+  "workflow_state_name": "canceled"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-15 03:49:56.507611",
+  "name": "onHold",
+  "style": "Warning",
+  "workflow_state_name": "onHold"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-15 03:50:14.726702",
+  "name": "paid",
+  "style": "Danger",
+  "workflow_state_name": "paid"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2024-03-15 03:50:24.842606",
+  "name": "exported",
+  "style": "Danger",
+  "workflow_state_name": "exported"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "question-sign",
+  "modified": "2023-12-15 02:47:06.142127",
+  "name": "Pending",
+  "style": "",
+  "workflow_state_name": "Pending"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "ok-sign",
+  "modified": "2023-12-15 02:47:06.143191",
+  "name": "Approved",
+  "style": "Success",
+  "workflow_state_name": "Approved"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "remove",
+  "modified": "2023-12-15 02:47:06.144254",
+  "name": "Rejected",
+  "style": "Danger",
+  "workflow_state_name": "Rejected"
+ }
+]
