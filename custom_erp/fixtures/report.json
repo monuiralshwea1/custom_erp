@@ -1,6 +1,127 @@
 [
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2025-02-07 17:27:53.441631",
+  "module": "Core",
+  "name": "Prepared Report Analytics",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Prepared Report",
+  "reference_report": null,
+  "report_name": "Prepared Report Analytics",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Prepared Report Analytics",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2025-03-07 10:54:09.429215",
+  "module": "Stock",
+  "name": "Available Serial No",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Ledger Entry",
+  "reference_report": null,
+  "report_name": "Available Serial No",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Available Serial No",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Available Serial No",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
+  "modified": "2025-06-06 18:09:18.221911",
+  "module": "Accounts",
+  "name": "Calculated Discount Mismatch",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Version",
+  "reference_report": null,
+  "report_name": "Calculated Discount Mismatch",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Calculated Discount Mismatch",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   },
+   {
+    "parent": "Calculated Discount Mismatch",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Administrator"
+   },
+   {
+    "parent": "Calculated Discount Mismatch",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Calculated Discount Mismatch",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -33,10 +154,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -69,10 +192,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -111,10 +236,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -153,10 +280,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -195,10 +324,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -243,10 +374,12 @@
     "parenttype": "Report",
     "role": "Stock Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -279,10 +412,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -315,10 +450,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -387,10 +524,12 @@
     "parenttype": "Report",
     "role": "Item Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -459,10 +598,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -507,10 +648,12 @@
     "parenttype": "Report",
     "role": "Sales User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -549,10 +692,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -585,10 +730,12 @@
     "parenttype": "Report",
     "role": "Expense Approver"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -621,10 +768,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -675,10 +824,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -711,10 +862,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -759,10 +912,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -795,10 +950,12 @@
     "parenttype": "Report",
     "role": "HR User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -843,10 +1000,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -891,10 +1050,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -927,10 +1088,12 @@
     "parenttype": "Report",
     "role": "Sales User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -963,10 +1126,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -999,10 +1164,12 @@
     "parenttype": "Report",
     "role": "Maintenance User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1035,10 +1202,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1083,10 +1252,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1119,10 +1290,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1155,10 +1328,12 @@
     "parenttype": "Report",
     "role": "Quality Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1197,10 +1372,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1233,10 +1410,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1269,10 +1448,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1305,10 +1486,12 @@
     "parenttype": "Report",
     "role": "Sales Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1328,10 +1511,12 @@
   "report_name": "Account Balance",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 1,
   "docstatus": 0,
@@ -1351,10 +1536,12 @@
   "report_name": "Electronic Invoice Register",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1393,10 +1580,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1423,10 +1612,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1477,10 +1668,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1531,10 +1724,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1567,10 +1762,12 @@
     "parenttype": "Report",
     "role": "Maintenance User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1621,10 +1818,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1651,10 +1850,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1687,10 +1888,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1729,10 +1932,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1771,10 +1976,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1813,10 +2020,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1849,10 +2058,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1915,10 +2126,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -1969,10 +2182,12 @@
     "parenttype": "Report",
     "role": "Maintenance User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2023,10 +2238,12 @@
     "parenttype": "Report",
     "role": "Maintenance User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2071,10 +2288,12 @@
     "parenttype": "Report",
     "role": "Leave Approver"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2107,10 +2326,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2143,10 +2364,12 @@
     "parenttype": "Report",
     "role": "Sales Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2179,10 +2402,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2221,10 +2446,12 @@
     "parenttype": "Report",
     "role": "Manufacturing Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2257,10 +2484,12 @@
     "parenttype": "Report",
     "role": "Website Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2299,10 +2528,12 @@
     "parenttype": "Report",
     "role": "Manufacturing Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2347,10 +2578,12 @@
     "parenttype": "Report",
     "role": "Stock Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2389,10 +2622,12 @@
     "parenttype": "Report",
     "role": "Manufacturing Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2431,10 +2666,12 @@
     "parenttype": "Report",
     "role": "Stock Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2479,10 +2716,12 @@
     "parenttype": "Report",
     "role": "Supplier"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2515,10 +2754,12 @@
     "parenttype": "Report",
     "role": "Projects Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2557,10 +2798,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2593,10 +2836,12 @@
     "parenttype": "Report",
     "role": "HR User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2653,10 +2898,12 @@
     "parenttype": "Report",
     "role": "Sales User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2701,10 +2948,12 @@
     "parenttype": "Report",
     "role": "Employee Self Service"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2724,10 +2973,12 @@
   "report_name": "Provident Fund Deductions",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2747,10 +2998,12 @@
   "report_name": "Professional Tax Deductions",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2783,10 +3036,12 @@
     "parenttype": "Report",
     "role": "HR User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2825,10 +3080,12 @@
     "parenttype": "Report",
     "role": "Employee"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2873,10 +3130,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2909,10 +3168,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2945,10 +3206,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -2975,10 +3238,12 @@
     "parenttype": "Report",
     "role": "Support Team"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3011,10 +3276,12 @@
     "parenttype": "Report",
     "role": "Sales Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3034,10 +3301,12 @@
   "report_name": "UAE VAT 201",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3070,10 +3339,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3100,10 +3371,12 @@
     "parenttype": "Report",
     "role": "Support Team"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3130,10 +3403,12 @@
     "parenttype": "Report",
     "role": "Support Team"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3160,10 +3435,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3202,10 +3479,12 @@
     "parenttype": "Report",
     "role": "Manufacturing Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3238,10 +3517,12 @@
     "parenttype": "Report",
     "role": "Projects Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3292,10 +3573,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3328,10 +3611,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3351,10 +3636,12 @@
   "report_name": "Dimension-wise Accounts Balance Report",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3417,10 +3704,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3459,10 +3748,12 @@
     "parenttype": "Report",
     "role": "Sales User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3501,10 +3792,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3549,10 +3842,12 @@
     "parenttype": "Report",
     "role": "Stock Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3591,10 +3886,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3633,10 +3930,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3669,10 +3968,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3705,10 +4006,12 @@
     "parenttype": "Report",
     "role": "Sales Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3728,10 +4031,12 @@
   "report_name": "VAT Audit Report",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3764,10 +4069,12 @@
     "parenttype": "Report",
     "role": "Sales Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3794,10 +4101,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3830,10 +4139,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3872,10 +4183,12 @@
     "parenttype": "Report",
     "role": "HR User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3914,10 +4227,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3944,10 +4259,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -3998,10 +4315,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4046,10 +4365,12 @@
     "parenttype": "Report",
     "role": "Employee Self Service"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4076,10 +4397,12 @@
     "parenttype": "Report",
     "role": "Administrator"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4118,10 +4441,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4148,10 +4473,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4184,10 +4511,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4214,10 +4543,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4268,10 +4599,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4310,10 +4643,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4364,10 +4699,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4418,10 +4755,12 @@
     "parenttype": "Report",
     "role": "Maintenance User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4460,10 +4799,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4490,10 +4831,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4544,10 +4887,12 @@
     "parenttype": "Report",
     "role": "Employee"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4567,10 +4912,12 @@
   "report_name": "Stock Ledger Variance",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4627,10 +4974,12 @@
     "parenttype": "Report",
     "role": "Employee Self Service"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4663,10 +5012,12 @@
     "parenttype": "Report",
     "role": "Sales Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4711,10 +5062,12 @@
     "parenttype": "Report",
     "role": "Employee"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4753,10 +5106,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4789,10 +5144,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [
    {
     "fieldname": "employee_name",
@@ -4868,10 +5225,12 @@
     "parenttype": "Report",
     "role": "Employee Self Service"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 1,
   "docstatus": 0,
@@ -4916,10 +5275,12 @@
     "parenttype": "Report",
     "role": "Employee Self Service"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4958,10 +5319,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -4994,10 +5357,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5017,10 +5382,12 @@
   "report_name": "Invalid Ledger Entries",
   "report_script": null,
   "report_type": "Script Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5101,10 +5468,12 @@
     "parenttype": "Report",
     "role": "Maintenance User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5150,10 +5519,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [
    {
     "fieldname": "posting_date",
@@ -5298,10 +5669,12 @@
     "parenttype": "Report",
     "role": "Administrator"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5321,10 +5694,12 @@
   "report_name": "Maintenance Schedules",
   "report_script": null,
   "report_type": "Query Report",
-  "roles": []
+  "roles": [],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5363,10 +5738,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5405,10 +5782,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5441,10 +5820,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5477,10 +5858,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5525,10 +5908,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5555,10 +5940,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5591,10 +5978,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5633,10 +6022,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5675,10 +6066,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5723,10 +6116,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5765,10 +6160,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5813,10 +6210,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5855,10 +6254,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5885,10 +6286,12 @@
     "parenttype": "Report",
     "role": "Fleet Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5921,10 +6324,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5963,10 +6368,12 @@
     "parenttype": "Report",
     "role": "HR User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -5999,10 +6406,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6047,10 +6456,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6089,52 +6500,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": "{\"add_total_row\": 0, \"sort_by\": \"Serial No.modified\", \"sort_order\": \"desc\", \"sort_by_next\": null, \"filters\": [[\"Serial No\", \"warehouse\", \"=\", \"\"]], \"sort_order_next\": \"desc\", \"columns\": [[\"name\", \"Serial No\"], [\"item_code\", \"Serial No\"], [\"amc_expiry_date\", \"Serial No\"], [\"maintenance_status\", \"Serial No\"],[\"item_name\", \"Serial No\"], [\"description\", \"Serial No\"], [\"item_group\", \"Serial No\"], [\"brand\", \"Serial No\"]]}",
-  "letter_head": null,
-  "modified": "2024-09-26 13:07:23.451182",
-  "module": "Stock",
-  "name": "Serial No Service Contract Expiry",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Serial No",
-  "reference_report": null,
-  "report_name": "Serial No Service Contract Expiry",
-  "report_script": null,
-  "report_type": "Report Builder",
-  "roles": [
-   {
-    "parent": "Serial No Service Contract Expiry",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Item Manager"
-   },
-   {
-    "parent": "Serial No Service Contract Expiry",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock Manager"
-   },
-   {
-    "parent": "Serial No Service Contract Expiry",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   }
-  ]
- },
- {
-  "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6173,10 +6544,12 @@
     "parenttype": "Report",
     "role": "Employee"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6203,10 +6576,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6239,10 +6614,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6287,10 +6664,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6336,10 +6715,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6384,10 +6765,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6426,10 +6809,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6462,10 +6847,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6504,10 +6891,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6540,10 +6929,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6582,58 +6973,12 @@
     "parenttype": "Report",
     "role": "HR Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
-  "columns": [],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": null,
-  "letter_head": null,
-  "modified": "2017-02-24 20:07:57.880462",
-  "module": "Stock",
-  "name": "Requested Items To Be Transferred",
-  "prepared_report": 0,
-  "query": "select \n    mr.name as \"Material Request:Link/Material Request:120\",\n\tmr.transaction_date as \"Date:Date:100\",\n\tmr_item.item_code as \"Item Code:Link/Item:120\",\n\tmr_item.qty as \"Qty:Float:100\",\n\tmr_item.ordered_qty as \"Transferred Qty:Float:100\", \n\t(mr_item.qty - ifnull(mr_item.ordered_qty, 0)) as \"Qty to Transfer:Float:100\",\n\tmr_item.item_name as \"Item Name::150\",\n\tmr_item.description as \"Description::200\",\n\tmr.company as \"Company:Link/Company:\"\nfrom\n\t`tabMaterial Request` mr, `tabMaterial Request Item` mr_item\nwhere\n\tmr_item.parent = mr.name\n\tand mr.material_request_type in (\"Material Transfer\", \"Material Issue\")\n\tand mr.docstatus = 1\n\tand mr.status != \"Stopped\"\n\tand ifnull(mr_item.ordered_qty, 0) < ifnull(mr_item.qty, 0)\norder by mr.transaction_date asc",
-  "ref_doctype": "Stock Entry",
-  "reference_report": null,
-  "report_name": "Requested Items To Be Transferred",
-  "report_script": null,
-  "report_type": "Query Report",
-  "roles": [
-   {
-    "parent": "Requested Items To Be Transferred",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   },
-   {
-    "parent": "Requested Items To Be Transferred",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing User"
-   },
-   {
-    "parent": "Requested Items To Be Transferred",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Manufacturing Manager"
-   },
-   {
-    "parent": "Requested Items To Be Transferred",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock Manager"
-   }
-  ]
- },
- {
-  "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6666,10 +7011,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6702,10 +7049,12 @@
     "parenttype": "Report",
     "role": "Projects Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6738,10 +7087,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6774,10 +7125,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6822,10 +7175,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6894,10 +7249,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6936,10 +7293,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -6984,10 +7343,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7032,10 +7393,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7068,10 +7431,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7116,10 +7481,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7164,10 +7531,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7200,10 +7569,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7236,10 +7607,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7272,10 +7645,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7314,10 +7689,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7362,10 +7739,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7398,10 +7777,12 @@
     "parenttype": "Report",
     "role": "Purchase Master Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7440,10 +7821,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7476,10 +7859,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7518,10 +7903,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7590,10 +7977,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7662,10 +8051,12 @@
     "parenttype": "Report",
     "role": "Manufacturing User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7692,10 +8083,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7722,10 +8115,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7764,10 +8159,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7780,7 +8177,7 @@
   "modified": "2024-05-26 19:41:20.978340",
   "module": "Assets",
   "name": "Fixed Asset Register",
-  "prepared_report": 1,
+  "prepared_report": 0,
   "query": null,
   "ref_doctype": "Asset",
   "reference_report": null,
@@ -7800,10 +8197,12 @@
     "parenttype": "Report",
     "role": "Quality Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7842,10 +8241,12 @@
     "parenttype": "Report",
     "role": "Quality Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7884,10 +8285,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7914,10 +8317,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -7956,10 +8361,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8004,10 +8411,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8052,10 +8461,12 @@
     "parenttype": "Report",
     "role": "Sales Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8106,10 +8517,12 @@
     "parenttype": "Report",
     "role": "Sales User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8160,10 +8573,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8214,10 +8629,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8268,10 +8685,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8322,10 +8741,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8352,10 +8773,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8418,10 +8841,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8472,10 +8897,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8526,10 +8953,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8562,10 +8991,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8616,10 +9047,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8664,10 +9097,12 @@
     "parenttype": "Report",
     "role": "Maintenance User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8712,10 +9147,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8766,10 +9203,12 @@
     "parenttype": "Report",
     "role": "Stock User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8802,10 +9241,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8844,10 +9285,12 @@
     "parenttype": "Report",
     "role": "Sales User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8910,57 +9353,12 @@
     "parenttype": "Report",
     "role": "Accounts Manager"
    }
-  ]
- },
- {
-  "add_total_row": 0,
-  "columns": [
-   {
-    "fieldname": "Cost Center",
-    "fieldtype": "Link",
-    "label": "Cost Center",
-    "options": "Cost Center",
-    "parent": "Stock Ledger",
-    "parentfield": "columns",
-    "parenttype": "Report",
-    "width": 0
-   }
   ],
-  "disabled": 0,
-  "docstatus": 0,
-  "doctype": "Report",
-  "filters": [],
-  "is_standard": "Yes",
-  "javascript": null,
-  "json": "{}",
-  "letter_head": null,
-  "modified": "2025-08-11 19:47:49.691092",
-  "module": "Stock",
-  "name": "Stock Ledger",
-  "prepared_report": 0,
-  "query": null,
-  "ref_doctype": "Stock Ledger Entry",
-  "reference_report": null,
-  "report_name": "Stock Ledger",
-  "report_script": null,
-  "report_type": "Report Builder",
-  "roles": [
-   {
-    "parent": "Stock Ledger",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Stock User"
-   },
-   {
-    "parent": "Stock Ledger",
-    "parentfield": "roles",
-    "parenttype": "Report",
-    "role": "Accounts Manager"
-   }
-  ]
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -8993,10 +9391,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -9023,10 +9423,12 @@
     "parenttype": "Report",
     "role": "System Manager"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -9065,10 +9467,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -9101,10 +9505,12 @@
     "parenttype": "Report",
     "role": "Accounts User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -9143,10 +9549,12 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
   "add_total_row": 0,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -9197,10 +9605,12 @@
     "parenttype": "Report",
     "role": "Purchase User"
    }
-  ]
+  ],
+  "timeout": 0
  },
  {
-  "add_total_row": 0,
+  "add_total_row": 1,
+  "add_translate_data": 0,
   "columns": [],
   "disabled": 0,
   "docstatus": 0,
@@ -9239,6 +9649,150 @@
     "parenttype": "Report",
     "role": "Auditor"
    }
-  ]
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{\"add_total_row\": 0, \"sort_by\": \"Serial No.modified\", \"sort_order\": \"desc\", \"sort_by_next\": null, \"filters\": [[\"Serial No\", \"warehouse\", \"=\", \"\"]], \"sort_order_next\": \"desc\", \"columns\": [[\"name\", \"Serial No\"], [\"item_code\", \"Serial No\"], [\"amc_expiry_date\", \"Serial No\"], [\"maintenance_status\", \"Serial No\"],[\"item_name\", \"Serial No\"], [\"description\", \"Serial No\"], [\"item_group\", \"Serial No\"], [\"brand\", \"Serial No\"]]}",
+  "letter_head": null,
+  "modified": "2024-09-26 13:07:23.451182",
+  "module": "Stock",
+  "name": "Serial No Service Contract Expiry",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Serial No",
+  "reference_report": null,
+  "report_name": "Serial No Service Contract Expiry",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Serial No Service Contract Expiry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Item Manager"
+   },
+   {
+    "parent": "Serial No Service Contract Expiry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Serial No Service Contract Expiry",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 1,
+  "add_translate_data": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2017-02-24 20:07:57.880462",
+  "module": "Stock",
+  "name": "Requested Items To Be Transferred",
+  "prepared_report": 0,
+  "query": "select \n    mr.name as \"Material Request:Link/Material Request:120\",\n\tmr.transaction_date as \"Date:Date:100\",\n\tmr_item.item_code as \"Item Code:Link/Item:120\",\n\tmr_item.qty as \"Qty:Float:100\",\n\tmr_item.ordered_qty as \"Transferred Qty:Float:100\", \n\t(mr_item.qty - ifnull(mr_item.ordered_qty, 0)) as \"Qty to Transfer:Float:100\",\n\tmr_item.item_name as \"Item Name::150\",\n\tmr_item.description as \"Description::200\",\n\tmr.company as \"Company:Link/Company:\"\nfrom\n\t`tabMaterial Request` mr, `tabMaterial Request Item` mr_item\nwhere\n\tmr_item.parent = mr.name\n\tand mr.material_request_type in (\"Material Transfer\", \"Material Issue\")\n\tand mr.docstatus = 1\n\tand mr.status != \"Stopped\"\n\tand ifnull(mr_item.ordered_qty, 0) < ifnull(mr_item.qty, 0)\norder by mr.transaction_date asc",
+  "ref_doctype": "Stock Entry",
+  "reference_report": null,
+  "report_name": "Requested Items To Be Transferred",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Requested Items To Be Transferred",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Requested Items To Be Transferred",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Requested Items To Be Transferred",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Requested Items To Be Transferred",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   }
+  ],
+  "timeout": 0
+ },
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [
+   {
+    "fieldname": "Cost Center",
+    "fieldtype": "Link",
+    "label": "Cost Center",
+    "options": "Cost Center",
+    "parent": "Stock Ledger",
+    "parentfield": "columns",
+    "parenttype": "Report",
+    "width": 0
+   }
+  ],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": "{}",
+  "letter_head": null,
+  "modified": "2025-08-11 19:47:49.691092",
+  "module": "Stock",
+  "name": "Stock Ledger",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Stock Ledger Entry",
+  "reference_report": null,
+  "report_name": "Stock Ledger",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "parent": "Stock Ledger",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Stock Ledger",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts Manager"
+   }
+  ],
+  "timeout": 0
  }
 ]

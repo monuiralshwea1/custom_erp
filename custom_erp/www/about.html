@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدليل التعليمي لنظام ERPNext v15</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body {
+    font-family: 'Cairo', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #667eea7d 0%, #764ba2a1 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.8;
+}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+header{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);padding:30px;border-radius:20px;text-align:center;margin-bottom:30px;box-shadow:0 10px 40px rgba(0,0,0,0.2)}
+header h1{color:#5a4fcf;font-size:2.5em;margin-bottom:10px}
+header p{color:#666;font-size:1.2em}
+nav{background:rgba(255,255,255,0.9);padding:15px;border-radius:15px;margin-bottom:30px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
+nav a{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:12px 25px;border-radius:25px;text-decoration:none;font-weight:600;transition:all 0.3s}
+nav a:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(102,126,234,0.4)}
+.module{background:#fff;border-radius:20px;padding:30px;margin-bottom:30px;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
+.module-header{display:flex;align-items:center;gap:15px;margin-bottom:25px;padding-bottom:20px;border-bottom:3px solid #667eea}
+.module-icon{width:60px;height:60px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:1.8em;color:#fff}
+.module h2{color:#333;font-size:1.8em}
+.module-intro{background:linear-gradient(135deg,#f5f7fa,#c3cfe2);padding:20px;border-radius:15px;margin-bottom:25px}
+.interface{background:#f8f9fa;border-radius:15px;padding:25px;margin-bottom:20px;border-right:5px solid #667eea}
+.interface h3{color:#5a4fcf;font-size:1.4em;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.interface h3::before{content:"📋";font-size:1.2em}
+.img-placeholder{background:linear-gradient(135deg,#e0e5ec,#f5f7fa);height:auto;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:15px 0;border:2px dashed #bbb;color:#888;font-size:1.1em}
+.fields-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;margin:20px 0}
+.field{background:#fff;padding:15px;border-radius:10px;border:1px solid #e0e0e0;transition:all 0.3s}
+.field:hover{box-shadow:0 5px 15px rgba(0,0,0,0.1);transform:translateY(-2px)}
+.field-name{font-weight:700;color:#5a4fcf;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.required::after{content:"*";color:#e74c3c;margin-right:5px}
+.field-desc{color:#666;font-size:0.95em}
+.steps{background:linear-gradient(135deg,#667eea10,#764ba210);padding:20px;border-radius:15px;margin-top:20px}
+.steps h4{color:#5a4fcf;margin-bottom:15px;font-size:1.2em}
+.steps ol{padding-right:25px}
+.steps li{margin-bottom:10px;padding:8px;background:#fff;border-radius:8px}
+.sales{--color:#27ae60}.purchases{--color:#e67e22}.accounts{--color:#3498db}.stock{--color:#9b59b6}.assets{--color:#795548}.hr{--color:#e74c3c}.manufacturing{--color:#607d8b}
+.sales .module-icon{background:linear-gradient(135deg,#27ae60,#2ecc71)}
+.purchases .module-icon{background:linear-gradient(135deg,#e67e22,#f39c12)}
+.accounts .module-icon{background:linear-gradient(135deg,#3498db,#2980b9)}
+.stock .module-icon{background:linear-gradient(135deg,#9b59b6,#8e44ad)}
+.assets .module-icon{background:linear-gradient(135deg,#795548,#8d6e63)}
+.hr .module-icon{background:linear-gradient(135deg,#e74c3c,#c0392b)}
+.manufacturing .module-icon{background:linear-gradient(135deg,#607d8b,#455a64)}
+footer{background:rgba(255,255,255,0.9);padding:30px;border-radius:15px;text-align:center;color:#666}
+@media(max-width:768px){header h1{font-size:1.8em}nav{flex-direction:column}nav a{text-align:center}.fields-grid{grid-template-columns:1fr}}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    clear: both;
+    font-weight: 400;
+    color: var(--neutral-white);
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🎓 الدليل التعليمي لنظام نيو سمارت تكنلولجي</h1> 
+<p>دليل شامل لاستخدام جميع أنظمة نيو سمارت تك خطوة بخطوة - مخصص للمستخدمين المبتدئين</p> 
+</header>
+
+<nav>
+<a href="#sales">💰 نظام المبيعات</a>
+<a href="#purchases">🛒 نظام المشتريات</a>
+<a href="#accounts">📊 نظام الحسابات</a>
+<a href="#stock">📦 نظام المخازن</a>
+<a href="#assets">🏢 نظام الأصول</a>
+<a href="#hr">👥 الموارد البشرية</a>
+<a href="#manufacturing">⚙️ نظام التصنيع</a>
+</nav>
+
+<!-- ═══════════════ نظام المبيعات ═══════════════ -->
+<section id="sales" class="module sales">
+<div class="module-header">
+<div class="module-icon">💰</div>
+<h2>نظام المبيعات</h2>
+</div>
+<div class="module-intro">
+<p><strong>ما هو نظام المبيعات؟</strong> هو النظام المسؤول عن إدارة جميع عمليات البيع من إنشاء العملاء وعروض الأسعار والفواتير وتتبع المدفوعات والمرتجعات. يساعدك في تتبع مبيعاتك وتحليل أداء فريق المبيعات.</p>
+</div>
+
+<!-- واجهة العملاء -->
+<div class="interface">
+<h3>واجهة إدارة العملاء</h3>
+<div class="img-placeholder"><img src="files/واجهة%20اضافة%20عميل.png" alt="واجهة العملاء" onerror="this.parentElement.innerHTML='📷 صورة واجهة إدارة العملاء'"></div>
+<p><strong>الوظيفة:</strong> إضافة وتعديل بيانات العملاء وإدارة معلومات التواصل والعناوين.</p>
+<h4>الحقول الأساسية:</h4>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">اسم العميل</div><div class="field-desc">الاسم الكامل للعميل أو الشركة</div></div>
+<div class="field"><div class="field-name required">نوع العميل</div><div class="field-desc">فرد أو شركة</div></div>
+<div class="field"><div class="field-name">مجموعة العملاء</div><div class="field-desc">تصنيف العميل (جملة/تجزئة)</div></div>
+<div class="field"><div class="field-name">رقم الهاتف</div><div class="field-desc">رقم التواصل الأساسي</div></div>
+<div class="field"><div class="field-name">البريد الإلكتروني</div><div class="field-desc">البريد للإشعارات والفواتير</div></div>
+<div class="field"><div class="field-name">العنوان</div><div class="field-desc">عنوان الشحن والفوترة</div></div>
+<div class="field"><div class="field-name">الرقم الضريبي</div><div class="field-desc">رقم التسجيل الضريبي إن وجد</div></div>
+<div class="field"><div class="field-name">حد الائتمان</div><div class="field-desc">الحد الأقصى للديون المسموحة</div></div>
+</div>
+<div class="steps">
+<h4>خطوات إضافة عميل جديد:</h4>
+<ol>
+<li>اذهب إلى: البيع ← العملاء ← جديد</li>
+<li>أدخل اسم العميل واختر نوعه</li>
+<li>حدد مجموعة العملاء المناسبة</li>
+<li>أضف بيانات التواصل والعنوان</li>
+<li>اضغط "حفظ" لإنشاء العميل</li>
+</ol>
+</div>
+</div>
+
+<!-- واجهة الأصناف -->
+<div class="interface">
+<h3>واجهة إدارة الأصناف</h3>
+<div class="img-placeholder"><img src="files/واجهة%20اضافة%20صنف2.png" alt="واجهة الأصناف" onerror="this.parentElement.innerHTML='📷 صورة واجهة إدارة الأصناف'"></div>
+<p><strong>الوظيفة:</strong> إنشاء وإدارة المنتجات والخدمات المتاحة للبيع.</p>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">كود الصنف</div><div class="field-desc">رمز فريد للصنف</div></div>
+<div class="field"><div class="field-name required">اسم الصنف</div><div class="field-desc">الاسم التجاري للمنتج</div></div>
+<div class="field"><div class="field-name required">مجموعة الصنف</div><div class="field-desc">التصنيف (إلكترونيات/أثاث...)</div></div>
+<div class="field"><div class="field-name">وحدة القياس</div><div class="field-desc">قطعة/كيلو/متر...</div></div>
+<div class="field"><div class="field-name">سعر البيع</div><div class="field-desc">السعر الافتراضي للبيع</div></div>
+<div class="field"><div class="field-name">الوصف</div><div class="field-desc">تفاصيل المنتج</div></div>
+</div>
+</div>
+
+<!-- عروض الأسعار -->
+<div class="interface">
+<h3>واجهة عروض الأسعار</h3>
+<div class="img-placeholder"><img src="files/واجهة%20عرض%20سعر.png" alt="عروض الأسعار" onerror="this.parentElement.innerHTML='📷 صورة واجهة عروض الأسعار'"></div>
+<p><strong>الوظيفة:</strong> إنشاء عروض أسعار للعملاء قبل البيع الفعلي.</p>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">العميل</div><div class="field-desc">اختيار العميل المستهدف</div></div>
+<div class="field"><div class="field-name required">الأصناف</div><div class="field-desc">المنتجات المعروضة</div></div>
+<div class="field"><div class="field-name">تاريخ الصلاحية</div><div class="field-desc">مدة سريان العرض</div></div>
+<div class="field"><div class="field-name">الشروط</div><div class="field-desc">شروط الدفع والتسليم</div></div>
+</div>
+<div class="steps">
+<h4>خطوات إنشاء عرض سعر:</h4>
+<ol>
+<li>اذهب إلى: البيع ← عروض الأسعار ← جديد</li>
+<li>اختر العميل من القائمة</li>
+<li>أضف الأصناف والكميات والأسعار</li>
+<li>حدد تاريخ انتهاء الصلاحية</li>
+<li>اضغط "حفظ" ثم "إرسال"</li>
+</ol>
+</div>
+</div>
+
+<!-- فواتير البيع -->
+<div class="interface">
+<h3>فواتير البيع النقدية والآجلة</h3>
+<div class="img-placeholder"><img src="files/واجهة%20اضافة%20فاتورة%20مبيعات.png" alt="فاتورة البيع" onerror="this.parentElement.innerHTML='📷 صورة واجهة فواتير البيع'"></div>
+<p><strong>الوظيفة:</strong> إنشاء فواتير البيع وتسجيل المبيعات الفعلية.</p>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">العميل</div><div class="field-desc">العميل المشتري</div></div>
+<div class="field"><div class="field-name required">تاريخ الفاتورة</div><div class="field-desc">تاريخ إصدار الفاتورة</div></div>
+<div class="field"><div class="field-name required">الأصناف</div><div class="field-desc">المنتجات المباعة</div></div>
+<div class="field"><div class="field-name">نوع الفاتورة</div><div class="field-desc">نقدي أو آجل</div></div>
+<div class="field"><div class="field-name">تاريخ الاستحقاق</div><div class="field-desc">للفواتير الآجلة</div></div>
+<div class="field"><div class="field-name">الضريبة</div><div class="field-desc">قالب الضريبة المطبق</div></div>
+</div>
+</div>
+
+<!-- المرتجعات -->
+<div class="interface">
+<h3>مرتجعات المبيعات</h3>
+<div class="img-placeholder"><img src="files/مرتجع%20مبيعات.png" alt="المرتجعات" onerror="this.parentElement.innerHTML='📷 صورة واجهة المرتجعات'"></div>
+<p><strong>الوظيفة:</strong> تسجيل البضائع المرتجعة من العملاء.</p>
+<div class="steps">
+<h4>خطوات إنشاء مرتجع:</h4>
+<ol>
+<li>افتح فاتورة البيع الأصلية</li>
+<li>اضغط على "إنشاء" ← "إرجاع"</li>
+<li>حدد الأصناف والكميات المرتجعة</li>
+<li>أضف سبب الإرجاع</li>
+<li>احفظ وأرسل المرتجع</li>
+</ol>
+</div>
+</div>
+
+<!-- الدفعات -->
+<div class="interface">
+<h3>تسجيل الدفعات</h3>
+<div class="img-placeholder"><img src="files/انشاء%20دفعات.png" alt="الدفعات" onerror="this.parentElement.innerHTML='📷 صورة واجهة الدفعات'"></div>
+<p><strong>الوظيفة:</strong> تسجيل المدفوعات المستلمة من العملاء.</p>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">نوع الدفع</div><div class="field-desc">استلام/دفع</div></div>
+<div class="field"><div class="field-name required">الطرف</div><div class="field-desc">العميل الدافع</div></div>
+<div class="field"><div class="field-name required">المبلغ</div><div class="field-desc">قيمة الدفعة</div></div>
+<div class="field"><div class="field-name required">طريقة الدفع</div><div class="field-desc">نقدي/بنكي/شيك</div></div>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════ نظام المشتريات ═══════════════ -->
+<section id="purchases" class="module purchases">
+<div class="module-header">
+<div class="module-icon">🛒</div>
+<h2>نظام المشتريات</h2>
+</div>
+<div class="module-intro">
+<p><strong>ما هو نظام المشتريات؟</strong> يدير جميع عمليات الشراء من الموردين، بدءاً من طلبات الشراء وحتى استلام البضائع ودفع المستحقات.</p>
+</div>
+
+<div class="interface">
+<h3>إدارة الموردين</h3>
+<div class="img-placeholder"><img src="images/purchases/suppliers.png" alt="الموردين" onerror="this.parentElement.innerHTML='📷 صورة واجهة الموردين'"></div>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">اسم المورد</div><div class="field-desc">اسم الشركة أو الفرد</div></div>
+<div class="field"><div class="field-name required">نوع المورد</div><div class="field-desc">محلي/خارجي</div></div>
+<div class="field"><div class="field-name">مجموعة الموردين</div><div class="field-desc">تصنيف المورد</div></div>
+<div class="field"><div class="field-name">بيانات التواصل</div><div class="field-desc">هاتف/بريد/عنوان</div></div>
+</div>
+</div>
+
+<div class="interface">
+<h3>طلبات الشراء</h3>
+<div class="img-placeholder"><img src="images/purchases/request.png" alt="طلب شراء" onerror="this.parentElement.innerHTML='📷 صورة واجهة طلبات الشراء'"></div>
+<p><strong>الوظيفة:</strong> إنشاء طلبات للأصناف المطلوب شراؤها من الأقسام المختلفة.</p>
+</div>
+
+<div class="interface">
+<h3>أوامر الشراء</h3>
+<div class="img-placeholder"><img src="images/purchases/order.png" alt="أمر شراء" onerror="this.parentElement.innerHTML='📷 صورة واجهة أوامر الشراء'"></div>
+<p><strong>الوظيفة:</strong> إرسال أوامر الشراء الرسمية للموردين.</p>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">المورد</div><div class="field-desc">المورد المختار</div></div>
+<div class="field"><div class="field-name required">الأصناف</div><div class="field-desc">المنتجات المطلوبة</div></div>
+<div class="field"><div class="field-name">تاريخ التسليم</div><div class="field-desc">موعد الاستلام المتوقع</div></div>
+</div>
+</div>
+
+<div class="interface">
+<h3>فواتير الشراء</h3>
+<div class="img-placeholder"><img src="images/purchases/invoice.png" alt="فاتورة شراء" onerror="this.parentElement.innerHTML='📷 صورة واجهة فواتير الشراء'"></div>
+<p><strong>الوظيفة:</strong> تسجيل فواتير الشراء من الموردين وتتبع المستحقات.</p>
+</div>
+</section>
+
+<!-- ═══════════════ نظام الحسابات ═══════════════ -->
+<section id="accounts" class="module accounts">
+<div class="module-header">
+<div class="module-icon">📊</div>
+<h2>نظام الحسابات</h2>
+</div>
+<div class="module-intro">
+<p><strong>ما هو نظام الحسابات؟</strong> يدير جميع العمليات المحاسبية من قيود يومية وسندات قبض وصرف وإعداد التقارير المالية.</p>
+</div>
+
+<div class="interface">
+<h3>دليل الحسابات</h3>
+<div class="img-placeholder"><img src="images/accounts/chart.png" alt="دليل الحسابات" onerror="this.parentElement.innerHTML='📷 صورة دليل الحسابات'"></div>
+<p><strong>الوظيفة:</strong> هيكل الحسابات المحاسبية للشركة (أصول، خصوم، إيرادات، مصروفات).</p>
+</div>
+
+<div class="interface">
+<h3>القيود اليومية</h3>
+<div class="img-placeholder"><img src="images/accounts/journal.png" alt="قيد يومية" onerror="this.parentElement.innerHTML='📷 صورة واجهة القيود اليومية'"></div>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">نوع القيد</div><div class="field-desc">قيد يومية/افتتاحي/إقفال</div></div>
+<div class="field"><div class="field-name required">التاريخ</div><div class="field-desc">تاريخ القيد</div></div>
+<div class="field"><div class="field-name required">الحسابات</div><div class="field-desc">مدين ودائن</div></div>
+<div class="field"><div class="field-name">البيان</div><div class="field-desc">وصف العملية</div></div>
+</div>
+</div>
+
+<div class="interface">
+<h3>سندات القبض</h3>
+<div class="img-placeholder"><img src="images/accounts/receipt.png" alt="سند قبض" onerror="this.parentElement.innerHTML='📷 صورة واجهة سندات القبض'"></div>
+<p><strong>الوظيفة:</strong> تسجيل المبالغ المستلمة من العملاء أو أي طرف آخر.</p>
+</div>
+
+<div class="interface">
+<h3>سندات الصرف</h3>
+<div class="img-placeholder"><img src="images/accounts/payment.png" alt="سند صرف" onerror="this.parentElement.innerHTML='📷 صورة واجهة سندات الصرف'"></div>
+<p><strong>الوظيفة:</strong> تسجيل المبالغ المدفوعة للموردين أو المصروفات.</p>
+</div>
+
+<div class="interface">
+<h3>الميزانية العمومية</h3>
+<div class="img-placeholder"><img src="images/accounts/balance.png" alt="الميزانية" onerror="this.parentElement.innerHTML='📷 صورة تقرير الميزانية'"></div>
+<p><strong>الوظيفة:</strong> تقرير يوضح المركز المالي للشركة (الأصول والخصوم وحقوق الملكية).</p>
+</div>
+
+<div class="interface">
+<h3>قائمة الأرباح والخسائر</h3>
+<div class="img-placeholder"><img src="images/accounts/pnl.png" alt="أرباح وخسائر" onerror="this.parentElement.innerHTML='📷 صورة تقرير الأرباح والخسائر'"></div>
+<p><strong>الوظيفة:</strong> تقرير يوضح الإيرادات والمصروفات وصافي الربح أو الخسارة.</p>
+</div>
+</section>
+
+<!-- ═══════════════ نظام المخازن ═══════════════ -->
+<section id="stock" class="module stock">
+<div class="module-header">
+<div class="module-icon">📦</div>
+<h2>نظام المخازن</h2>
+</div>
+<div class="module-intro">
+<p><strong>ما هو نظام المخازن؟</strong> يدير المخزون والمستودعات وحركة البضائع من إضافة ونقل وجرد.</p>
+</div>
+
+<div class="interface">
+<h3>إدارة المستودعات</h3>
+<div class="img-placeholder"><img src="images/stock/warehouse.png" alt="المستودعات" onerror="this.parentElement.innerHTML='📷 صورة واجهة المستودعات'"></div>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">اسم المستودع</div><div class="field-desc">اسم تعريفي للمخزن</div></div>
+<div class="field"><div class="field-name">الموقع</div><div class="field-desc">العنوان الفعلي</div></div>
+<div class="field"><div class="field-name">المستودع الأب</div><div class="field-desc">للتصنيف الهرمي</div></div>
+</div>
+</div>
+
+<div class="interface">
+<h3>إدخال مخزون</h3>
+<div class="img-placeholder"><img src="images/stock/entry.png" alt="إدخال مخزون" onerror="this.parentElement.innerHTML='📷 صورة واجهة إدخال المخزون'"></div>
+<p><strong>الوظيفة:</strong> إضافة بضائع جديدة للمخزون (استلام بضاعة، إنتاج...).</p>
+</div>
+
+<div class="interface">
+<h3>إخراج مخزون</h3>
+<div class="img-placeholder"><img src="images/stock/issue.png" alt="إخراج مخزون" onerror="this.parentElement.innerHTML='📷 صورة واجهة إخراج المخزون'"></div>
+<p><strong>الوظيفة:</strong> صرف بضائع من المخزون (للتصنيع أو التالف...).</p>
+</div>
+
+<div class="interface">
+<h3>تحويل مخزون</h3>
+<div class="img-placeholder"><img src="images/stock/transfer.png" alt="تحويل مخزون" onerror="this.parentElement.innerHTML='📷 صورة واجهة تحويل المخزون'"></div>
+<p><strong>الوظيفة:</strong> نقل البضائع بين المستودعات.</p>
+</div>
+
+<div class="interface">
+<h3>الجرد</h3>
+<div class="img-placeholder"><img src="images/stock/reconcile.png" alt="الجرد" onerror="this.parentElement.innerHTML='📷 صورة واجهة الجرد'"></div>
+<p><strong>الوظيفة:</strong> مطابقة الكميات الفعلية مع النظام وتسوية الفروقات.</p>
+</div>
+</section>
+
+<!-- ═══════════════ نظام الأصول ═══════════════ -->
+<section id="assets" class="module assets">
+<div class="module-header">
+<div class="module-icon">🏢</div>
+<h2>نظام الأصول الثابتة</h2>
+</div>
+<div class="module-intro">
+<p><strong>ما هو نظام الأصول؟</strong> يدير الأصول الثابتة للشركة (معدات، أثاث، سيارات) ويحسب الإهلاك تلقائياً.</p>
+</div>
+
+<div class="interface">
+<h3>إضافة أصل</h3>
+<div class="img-placeholder"><img src="images/assets/add.png" alt="إضافة أصل" onerror="this.parentElement.innerHTML='📷 صورة واجهة إضافة أصل'"></div>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">اسم الأصل</div><div class="field-desc">وصف الأصل</div></div>
+<div class="field"><div class="field-name required">فئة الأصل</div><div class="field-desc">معدات/أثاث/سيارات</div></div>
+<div class="field"><div class="field-name required">قيمة الشراء</div><div class="field-desc">تكلفة الأصل</div></div>
+<div class="field"><div class="field-name">تاريخ الشراء</div><div class="field-desc">تاريخ الاقتناء</div></div>
+<div class="field"><div class="field-name">الموقع</div><div class="field-desc">مكان الأصل</div></div>
+</div>
+</div>
+
+<div class="interface">
+<h3>الإهلاك</h3>
+<div class="img-placeholder"><img src="images/assets/depreciation.png" alt="الإهلاك" onerror="this.parentElement.innerHTML='📷 صورة واجهة الإهلاك'"></div>
+<p><strong>الوظيفة:</strong> حساب الإهلاك الدوري للأصول وتسجيله محاسبياً.</p>
+</div>
+
+<div class="interface">
+<h3>بيع/التخلص من الأصول</h3>
+<div class="img-placeholder"><img src="images/assets/sell.png" alt="بيع أصل" onerror="this.parentElement.innerHTML='📷 صورة واجهة بيع الأصول'"></div>
+<p><strong>الوظيفة:</strong> تسجيل بيع الأصول أو التخلص منها وحساب الأرباح/الخسائر.</p>
+</div>
+</section>
+
+<!-- ═══════════════ الموارد البشرية ═══════════════ -->
+<section id="hr" class="module hr">
+<div class="module-header">
+<div class="module-icon">👥</div>
+<h2>نظام الموارد البشرية</h2>
+</div>
+<div class="module-intro">
+<p><strong>ما هو نظام الموارد البشرية؟</strong> يدير شؤون الموظفين من بيانات وحضور وإجازات ورواتب.</p>
+</div>
+
+<div class="interface">
+<h3>إدارة الموظفين</h3>
+<div class="img-placeholder"><img src="images/hr/employees.png" alt="الموظفين" onerror="this.parentElement.innerHTML='📷 صورة واجهة الموظفين'"></div>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">اسم الموظف</div><div class="field-desc">الاسم الكامل</div></div>
+<div class="field"><div class="field-name required">القسم</div><div class="field-desc">القسم التابع له</div></div>
+<div class="field"><div class="field-name required">المسمى الوظيفي</div><div class="field-desc">الوظيفة الحالية</div></div>
+<div class="field"><div class="field-name">تاريخ التعيين</div><div class="field-desc">تاريخ بدء العمل</div></div>
+<div class="field"><div class="field-name">الراتب الأساسي</div><div class="field-desc">الراتب الشهري</div></div>
+</div>
+</div>
+
+<div class="interface">
+<h3>الحضور والانصراف</h3>
+<div class="img-placeholder"><img src="images/hr/attendance.png" alt="الحضور" onerror="this.parentElement.innerHTML='📷 صورة واجهة الحضور'"></div>
+<p><strong>الوظيفة:</strong> تسجيل ومتابعة حضور وانصراف الموظفين يومياً.</p>
+</div>
+
+<div class="interface">
+<h3>الإجازات</h3>
+<div class="img-placeholder"><img src="images/hr/leaves.png" alt="الإجازات" onerror="this.parentElement.innerHTML='📷 صورة واجهة الإجازات'"></div>
+<p><strong>الوظيفة:</strong> إدارة طلبات الإجازات وأرصدتها والموافقات.</p>
+</div>
+
+<div class="interface">
+<h3>الرواتب</h3>
+<div class="img-placeholder"><img src="images/hr/payroll.png" alt="الرواتب" onerror="this.parentElement.innerHTML='📷 صورة واجهة الرواتب'"></div>
+<p><strong>الوظيفة:</strong> احتساب وصرف رواتب الموظفين شهرياً مع البدلات والخصومات.</p>
+</div>
+</section>
+
+<!-- ═══════════════ نظام التصنيع ═══════════════ -->
+<section id="manufacturing" class="module manufacturing">
+<div class="module-header">
+<div class="module-icon">⚙️</div>
+<h2>نظام التصنيع</h2>
+</div>
+<div class="module-intro">
+<p><strong>ما هو نظام التصنيع؟</strong> يدير عمليات الإنتاج من قوائم المواد (BOM) وأوامر التصنيع وتتبع مراحل الإنتاج.</p>
+</div>
+
+<div class="interface">
+<h3>قائمة المواد (BOM)</h3>
+<div class="img-placeholder"><img src="images/manufacturing/bom.png" alt="BOM" onerror="this.parentElement.innerHTML='📷 صورة واجهة قائمة المواد'"></div>
+<p><strong>الوظيفة:</strong> تحديد المواد الخام والكميات اللازمة لإنتاج صنف معين.</p>
+<div class="fields-grid">
+<div class="field"><div class="field-name required">الصنف المنتج</div><div class="field-desc">المنتج النهائي</div></div>
+<div class="field"><div class="field-name required">الكمية</div><div class="field-desc">كمية الإنتاج الأساسية</div></div>
+<div class="field"><div class="field-name required">المواد الخام</div><div class="field-desc">قائمة المكونات</div></div>
+</div>
+</div>
+
+<div class="interface">
+<h3>أوامر التصنيع</h3>
+<div class="img-placeholder"><img src="images/manufacturing/order.png" alt="أمر تصنيع" onerror="this.parentElement.innerHTML='📷 صورة واجهة أوامر التصنيع'"></div>
+<p><strong>الوظيفة:</strong> إنشاء أوامر لإنتاج كميات محددة من المنتجات.</p>
+</div>
+
+<div class="interface">
+<h3>مراحل الإنتاج</h3>
+<div class="img-placeholder"><img src="images/manufacturing/stages.png" alt="مراحل الإنتاج" onerror="this.parentElement.innerHTML='📷 صورة واجهة مراحل الإنتاج'"></div>
+<p><strong>الوظيفة:</strong> تتبع تقدم الإنتاج عبر المراحل المختلفة.</p>
+</div>
+
+<div class="interface">
+<h3>استهلاك المواد</h3>
+<div class="img-placeholder"><img src="images/manufacturing/consume.png" alt="استهلاك المواد" onerror="this.parentElement.innerHTML='📷 صورة واجهة استهلاك المواد'"></div>
+<p><strong>الوظيفة:</strong> تسجيل المواد المستهلكة فعلياً في عملية الإنتاج.</p>
+</div>
+</section>
+
+<footer>
+<p>📘 الدليل التعليمي لنظام نيو سمارت </p> 
+<p>جميع الحقوق محفوظة © 2024</p>
+</footer>
+</div>
+</body>
+</html>
+

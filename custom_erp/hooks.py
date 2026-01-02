@@ -28,6 +28,8 @@ fixtures = [
                 "test2",
                 "POS Invoice",
                 "pos2",
+                "add buton asset form",
+                "add buton asset list",
                 "اضافة زر اضافة جديد للواجهات"
             ]]
         ]
