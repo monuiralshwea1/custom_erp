@@ -5,45 +5,71 @@ def execute(filters=None):
     if not filters:
         filters = {}
 
-    conditions = ""
+    wheres = ""
+    branch_where = ""
 
     if filters.get("item_code"):
-        conditions += " AND sle.item_code = %(item_code)s"
+        wheres += " AND sle.item_code = %(item_code)s"
 
     if filters.get("item_group"):
-        conditions += " AND item.item_group = %(item_group)s"
+        wheres += " AND item.item_group = %(item_group)s"
 
     if filters.get("branch"):
-        conditions += " AND sed.branch = %(branch)s"
+        branch_where += " AND t.branch = %(branch)s"
 
     show_summary = bool(filters.get("show_summary"))
 
     query = """
         SELECT
-            sle.posting_date,
-            sle.posting_time,
-            se.stock_entry_type,  -- Fetching Stock Entry Type instead of voucher_type
-            sle.voucher_no,
-            sle.warehouse,
-            sed.branch,
-            sle.item_code,
-            item.item_name,
-            item.item_group,
-            (sle.qty_after_transaction - sle.actual_qty) AS qty_before,
-            CASE WHEN sle.actual_qty > 0 THEN sle.actual_qty ELSE 0 END AS in_qty,
-            CASE WHEN sle.actual_qty < 0 THEN ABS(sle.actual_qty) ELSE 0 END AS out_qty,
-            sle.qty_after_transaction AS qty_after
-        FROM `tabStock Ledger Entry` sle
-        INNER JOIN `tabItem` item ON item.name = sle.item_code
-        LEFT JOIN `tabStock Entry` se ON se.name = sle.voucher_no  -- Link to Stock Entry Main Table
-        LEFT JOIN `tabStock Entry Detail` sed ON sed.parent = sle.voucher_no
-            AND sed.item_code = sle.item_code
-            AND (sed.t_warehouse = sle.warehouse OR sed.s_warehouse = sle.warehouse)
-        WHERE sle.is_cancelled = 0
-        AND sle.posting_date BETWEEN %(from_date)s AND %(to_date)s
-        {conditions}
-        ORDER BY sle.posting_date {order}, sle.posting_time {order}
-    """.format(conditions=conditions, order="ASC" if show_summary else "DESC")
+            t.posting_date,
+            t.posting_time,
+            t.stock_entry_type,
+            t.voucher_no,
+            t.warehouse,
+            t.branch,
+            t.item_code,
+            t.item_name,
+            t.item_group,
+            t.qty_before,
+            t.in_qty,
+            t.out_qty,
+            t.qty_after
+        FROM (
+            SELECT
+                sle.posting_date,
+                sle.posting_time,
+                se.stock_entry_type,
+                sle.voucher_no,
+                sle.warehouse,
+                COALESCE(NULLIF(sed.branch, ''), NULLIF(se.branch, ''), '') AS branch,
+                sle.item_code,
+                item.item_name,
+                item.item_group,
+                (sle.qty_after_transaction - sle.actual_qty) AS qty_before,
+                CASE WHEN sle.actual_qty > 0 THEN sle.actual_qty ELSE 0 END AS in_qty,
+                CASE WHEN sle.actual_qty < 0 THEN ABS(sle.actual_qty) ELSE 0 END AS out_qty,
+                sle.qty_after_transaction AS qty_after
+            FROM `tabStock Ledger Entry` sle
+            INNER JOIN `tabItem` item ON item.name = sle.item_code
+            LEFT JOIN `tabStock Entry` se ON se.name = sle.voucher_no
+            LEFT JOIN (
+                SELECT parent, item_code, MAX(NULLIF(branch, '')) AS branch
+                FROM `tabStock Entry Detail`
+                WHERE docstatus < 2
+                GROUP BY parent, item_code
+            ) sed ON sed.parent = sle.voucher_no AND sed.item_code = sle.item_code
+            WHERE sle.is_cancelled = 0
+            AND sle.posting_date BETWEEN %(from_date)s AND %(to_date)s
+            {wheres}
+        ) t
+        WHERE 1 = 1 {branch_where}
+        ORDER BY {order_by}
+    """.format(
+        wheres=wheres,
+        branch_where=branch_where,
+        order_by=("t.branch, t.item_code, t.posting_date ASC, t.posting_time ASC"
+                  if show_summary else "t.posting_date DESC, t.posting_time DESC"),
+    )
 
     data = frappe.db.sql(query, filters, as_dict=1)
 
