@@ -1,0 +1,698 @@
+طريقة التعامل مع الاخطاء والحلول
+================================
+
+المكان:
+apps/custom_erp/طريقة التعامل مع الاخطاء والحلول.txt
+
+هذا الملف مرجع سريع للتعامل مع أخطاء تشغيل ERPNext / Frappe Bench على السيرفر، وخصوصًا المشاكل التي ظهرت أثناء العمل على site1.local وتطبيق custom_erp.
+
+
+معلومات النظام الحالية
+---------------------
+
+مسار bench:
+/home/newsmart/frappe-bench2
+
+الموقع:
+site1.local
+
+عنوان IP الذي ظهر أثناء الفحص:
+192.168.0.248
+
+منفذ النظام:
+8001
+
+رابط الفتح المتوقع:
+http://192.168.0.248:8001
+
+
+أوامر أساسية قبل أي عمل
+----------------------
+
+1. الدخول إلى مجلد bench:
+
+cd /home/newsmart/frappe-bench2
+
+شرح الأمر:
+ينقلك إلى مجلد ERPNext/Frappe Bench. أغلب أوامر bench يجب تشغيلها من هذا المجلد.
+
+
+2. معرفة المواقع الموجودة:
+
+ls sites
+
+شرح الأمر:
+يعرض مجلدات المواقع مثل site1.local.
+
+
+3. معرفة التطبيقات الموجودة:
+
+ls apps
+
+شرح الأمر:
+يعرض التطبيقات المثبتة في bench مثل frappe وerpnext وcustom_erp.
+
+
+4. معرفة التطبيقات المثبتة على موقع معين:
+
+bench --site site1.local list-apps
+
+شرح الأمر:
+يعرض التطبيقات المثبتة على site1.local.
+
+
+تشغيل النظام
+------------
+
+الأمر:
+
+bench start
+
+شرح الأمر:
+يشغل خدمات التطوير الخاصة بـ Frappe/ERPNext، وتشمل عادة:
+- redis_cache
+- redis_queue
+- web
+- socketio
+- watch
+- schedule
+- worker
+
+بعد تشغيله افتح النظام من المتصفح:
+
+http://192.168.0.248:8001
+
+ملاحظة:
+إذا أغلقت شاشة التيرمنال أو أوقفت الأمر، يتوقف السيرفر لأن bench start يعمل في نفس الجلسة.
+
+
+مشكلة: bench start يتوقف بسبب Address already in use
+-----------------------------------------------------
+
+مثال الخطأ:
+
+Could not create server TCP listening socket 127.0.0.1:13001: bind: Address already in use
+
+المعنى:
+هناك خدمة أخرى تستخدم نفس المنفذ. في حالتنا كان Redis يعمل مسبقًا على المنفذ 13001، لذلك فشل bench start وأوقف باقي الخدمات.
+
+التحقق من Redis:
+
+ps -ef | rg 'redis-server'
+
+شرح الأمر:
+يعرض عمليات Redis التي تعمل حاليًا.
+
+التحقق من Redis الخاص بالـ bench:
+
+ps -ef | rg 'redis-server 127.0.0.1:(13001|11001)'
+
+شرح الأمر:
+يتحقق هل Redis يعمل على منافذ bench:
+- 13001 للـ redis_cache
+- 11001 للـ redis_queue
+
+إيقاف عمليات Redis المتعارضة:
+
+kill PID
+
+مثال:
+
+kill 6604 6610
+
+شرح الأمر:
+يوقف العمليات التي أرقامها 6604 و6610.
+
+بعدها شغل النظام مرة أخرى:
+
+bench start
+
+
+مشكلة: Redis Queue connection refused
+-------------------------------------
+
+مثال الخطأ:
+
+Redis Queue runs @ redis://127.0.0.1:11001
+Connection refused
+
+المعنى:
+خدمة redis_queue غير شغالة، وERPNext لا يستطيع إرسال المهام الخلفية إلى queue.
+
+التحقق:
+
+bench doctor
+
+شرح الأمر:
+يفحص حالة scheduler والـ workers والـ Redis.
+
+إذا ظهر:
+
+Please make sure that Redis Queue runs @ redis://127.0.0.1:11001
+
+فهذا يعني أن redis_queue لا يعمل.
+
+تشغيل Redis Queue يدويًا مؤقتًا:
+
+redis-server config/redis_queue.conf --daemonize yes
+
+شرح الأمر:
+يشغل Redis Queue في الخلفية حسب إعدادات bench.
+
+تشغيل Redis Cache يدويًا مؤقتًا:
+
+redis-server config/redis_cache.conf --daemonize yes
+
+شرح الأمر:
+يشغل Redis Cache في الخلفية حسب إعدادات bench.
+
+ملاحظة مهمة:
+إذا شغلت Redis يدويًا ثم أردت تشغيل bench start، يجب إيقاف Redis اليدوي أولًا، وإلا سيظهر خطأ Address already in use.
+
+
+مشكلة: النظام لا يفتح من المتصفح
+-------------------------------
+
+1. تحقق من IP:
+
+hostname -I
+
+شرح الأمر:
+يعرض عنوان IP للجهاز على الشبكة.
+
+2. تحقق من المنفذ في إعدادات bench:
+
+cat sites/common_site_config.json
+
+شرح الأمر:
+يعرض إعدادات bench مثل webserver_port وredis_queue وredis_cache.
+
+ابحث عن:
+
+"webserver_port": 8001
+
+3. تحقق هل المنفذ مفتوح:
+
+ss -ltnp | rg ':8001'
+
+شرح الأمر:
+يفحص هل هناك خدمة تستمع على المنفذ 8001.
+
+4. تحقق هل خدمة web تعمل:
+
+ps -ef | rg 'bench serve|frappe serve|--port 8001'
+
+شرح الأمر:
+يعرض عملية Frappe web server إذا كانت تعمل.
+
+5. إذا لم يظهر شيء:
+
+bench start
+
+
+مشكلة: bench migrate يتوقف أو يأخذ وقت طويل
+-------------------------------------------
+
+الأمر:
+
+bench --site site1.local migrate
+
+شرح الأمر:
+ينفذ patches، يزامن DocTypes، يستورد fixtures، ويحدث ملفات الموقع.
+
+إذا استغرق وقتًا طويلًا جدًا بعد وصول:
+
+Updating DocTypes for custom_erp 100%
+
+فالسبب قد يكون استيراد fixtures كبيرة جدًا.
+
+في custom_erp يوجد fixture كبير:
+
+apps/custom_erp/custom_erp/fixtures/translation.json
+
+أوامر فحص حجم ملفات fixtures:
+
+wc -c apps/custom_erp/custom_erp/fixtures/*.json
+
+شرح الأمر:
+يعرض حجم الملفات بالبايت.
+
+wc -l apps/custom_erp/custom_erp/fixtures/*.json
+
+شرح الأمر:
+يعرض عدد الأسطر في كل ملف.
+
+حل مؤقت عند وجود مشكلة في فهرسة البحث:
+
+bench --site site1.local migrate --skip-search-index
+
+شرح الأمر:
+يشغل migrate مع تخطي إعادة بناء فهرس البحث.
+
+ملاحظة:
+هذا لا يتخطى fixtures، فقط يتخطى search index.
+
+
+مشكلة: أمر bench لا يستطيع الاتصال بقاعدة البيانات
+--------------------------------------------------
+
+مثال الخطأ:
+
+Can't connect to MySQL server on '127.0.0.1'
+
+أسباب محتملة:
+- MariaDB غير شغال.
+- الأمر يعمل داخل بيئة مقيدة الصلاحيات.
+- بيانات الاتصال في site_config غير صحيحة.
+
+التحقق من إعدادات الموقع:
+
+cat sites/site1.local/site_config.json
+
+شرح الأمر:
+يعرض إعدادات قاعدة البيانات الخاصة بالموقع.
+
+التحقق من عمليات MariaDB:
+
+ps -ef | rg 'mariadb|mysql'
+
+شرح الأمر:
+يعرض هل خدمة قاعدة البيانات تعمل.
+
+
+أوامر فحص الأخطاء Logs
+----------------------
+
+1. فحص سجل Frappe:
+
+tail -80 logs/frappe.log
+
+شرح الأمر:
+يعرض آخر 80 سطر من سجل أخطاء Frappe.
+
+
+2. فحص سجل bench:
+
+tail -80 logs/bench.log
+
+شرح الأمر:
+يعرض آخر أوامر bench التي تم تشغيلها وبعض تفاصيلها.
+
+
+3. فحص أخطاء worker:
+
+tail -80 logs/worker.error.log
+
+شرح الأمر:
+يعرض أخطاء المهام الخلفية.
+
+
+4. فحص سجل worker العادي:
+
+tail -80 logs/worker.log
+
+شرح الأمر:
+يعرض نشاط worker.
+
+
+5. فحص scheduler:
+
+tail -80 logs/scheduler.log
+
+شرح الأمر:
+يعرض سجل المجدول scheduler.
+
+
+6. متابعة السجل لحظيًا:
+
+tail -f logs/frappe.log
+
+شرح الأمر:
+يعرض السجل بشكل مباشر أثناء حدوث الأخطاء.
+
+للخروج اضغط:
+Ctrl + C
+
+
+أوامر الكاش والتحديث
+--------------------
+
+1. مسح كاش موقع:
+
+bench --site site1.local clear-cache
+
+شرح الأمر:
+يمسح الكاش الخاص بالموقع بعد تعديل hooks أو إعدادات أو صلاحيات.
+
+
+2. مسح كاش الموقع وإعادة بناء:
+
+bench --site site1.local clear-cache
+bench build
+
+شرح الأمر:
+الأول يمسح كاش الموقع، والثاني يعيد بناء ملفات assets مثل JavaScript وCSS.
+
+
+3. بناء تطبيق معين:
+
+bench build --app custom_erp
+
+شرح الأمر:
+يعيد بناء ملفات assets الخاصة بتطبيق custom_erp فقط.
+
+
+أوامر التحقق من التخصيصات
+-------------------------
+
+1. التحقق من وجود حقل custom_company على Item:
+
+bench --site site1.local execute frappe.db.get_value --args "['Custom Field', 'Item-custom_company', 'name']"
+
+شرح الأمر:
+يتأكد أن الحقل المخصص للصنف موجود.
+
+
+2. التحقق من نوع الحقل:
+
+bench --site site1.local execute frappe.db.get_value --args "['Custom Field', 'Item-custom_company', ['fieldtype', 'options']]"
+
+النتيجة المتوقعة:
+
+["Link", "Company"]
+
+
+3. التحقق من تفعيل Strict User Permissions:
+
+bench --site site1.local execute frappe.db.get_single_value --args "['System Settings', 'apply_strict_user_permissions']"
+
+النتيجة المتوقعة:
+
+1
+
+
+4. التحقق من أن patch تم تنفيذه:
+
+bench --site site1.local execute frappe.db.get_all --args "['Patch Log']" --kwargs "{'filters': {'patch': 'custom_erp.patches.setup_company_isolation'}, 'fields': ['patch'], 'limit': 1}"
+
+شرح الأمر:
+يفحص Patch Log لمعرفة هل patch العزل مسجل أم لا.
+
+
+5. فحص ملفات Python:
+
+env/bin/python -m py_compile apps/custom_erp/custom_erp/company_isolation.py apps/custom_erp/custom_erp/patches/setup_company_isolation.py
+
+شرح الأمر:
+يتأكد أن ملفات Python لا تحتوي على أخطاء syntax.
+
+
+أوامر Git مهمة
+--------------
+
+1. معرفة الملفات المعدلة:
+
+git -C apps/custom_erp status --short
+
+شرح الأمر:
+يعرض الملفات المعدلة أو الجديدة داخل تطبيق custom_erp.
+
+
+2. عرض الفرق في ملف:
+
+git -C apps/custom_erp diff -- custom_erp/hooks.py
+
+شرح الأمر:
+يعرض التعديلات التي تمت على hooks.py.
+
+
+3. عرض الفرق في أكثر من ملف:
+
+git -C apps/custom_erp diff -- custom_erp/hooks.py custom_erp/patches.txt
+
+شرح الأمر:
+يعرض التعديلات في الملفات المحددة.
+
+
+أوامر البحث داخل الملفات
+-----------------------
+
+1. البحث عن نص داخل الملفات:
+
+rg "permission_query_conditions" apps/custom_erp
+
+شرح الأمر:
+يبحث عن النص داخل تطبيق custom_erp.
+
+
+2. عرض ملفات التطبيق:
+
+rg --files apps/custom_erp
+
+شرح الأمر:
+يعرض كل الملفات داخل تطبيق custom_erp بسرعة.
+
+
+3. عرض جزء من ملف:
+
+sed -n '1,200p' apps/custom_erp/custom_erp/hooks.py
+
+شرح الأمر:
+يعرض الأسطر من 1 إلى 200 من الملف.
+
+
+أوامر إدارة الموقع
+------------------
+
+1. تشغيل migrate:
+
+bench --site site1.local migrate
+
+شرح الأمر:
+يطبق patches ويحدث DocTypes ويستورد fixtures.
+
+
+2. تشغيل migrate مع تخطي search index:
+
+bench --site site1.local migrate --skip-search-index
+
+شرح الأمر:
+مفيد إذا كان هناك مشكلة في Redis أو فهرسة البحث.
+
+
+3. معرفة معلومات التطبيقات:
+
+bench --site site1.local list-apps
+
+شرح الأمر:
+يعرض التطبيقات المثبتة على الموقع.
+
+
+4. تنفيذ دالة Python داخل Frappe:
+
+bench --site site1.local execute path.to.function
+
+مثال:
+
+bench --site site1.local execute frappe.db.get_single_value --args "['System Settings', 'apply_strict_user_permissions']"
+
+شرح الأمر:
+يشغل دالة Python داخل بيئة الموقع.
+
+
+أوامر النسخ الاحتياطي
+--------------------
+
+1. أخذ نسخة احتياطية لموقع:
+
+bench --site site1.local backup
+
+شرح الأمر:
+ينشئ نسخة احتياطية من قاعدة البيانات وملفات الموقع.
+
+
+2. أخذ نسخة لكل المواقع:
+
+bench --site all backup
+
+شرح الأمر:
+ينشئ نسخة احتياطية لكل المواقع داخل bench.
+
+
+3. مكان النسخ الاحتياطية:
+
+sites/site1.local/private/backups
+
+
+أوامر الاستعادة Restore
+-----------------------
+
+استعادة نسخة قاعدة بيانات:
+
+bench --site site1.local restore path/to/database.sql.gz
+
+شرح الأمر:
+يستعيد قاعدة البيانات من ملف backup.
+
+إذا احتاج كلمة مرور root لقاعدة البيانات:
+
+bench --site site1.local restore path/to/database.sql.gz --db-root-password PASSWORD
+
+تنبيه:
+أمر restore يستبدل بيانات الموقع، لذلك يجب استخدامه بحذر شديد وبعد أخذ نسخة احتياطية.
+
+
+طريقة تشخيص أي خطأ بشكل عام
+--------------------------
+
+1. اقرأ آخر سطور الخطأ:
+
+tail -80 logs/frappe.log
+
+2. افحص خدمات bench:
+
+bench doctor
+
+3. افحص هل المنافذ تعمل:
+
+ss -ltnp | rg ':8001|:11001|:13001'
+
+4. افحص العمليات:
+
+ps -ef | rg 'bench|frappe|redis|worker|schedule'
+
+5. إذا عدلت hooks أو Python:
+
+bench --site site1.local clear-cache
+
+6. إذا عدلت DocTypes أو patches:
+
+bench --site site1.local migrate
+
+7. إذا ظهرت مشكلة في Redis:
+
+ps -ef | rg 'redis-server'
+
+ثم أوقف العملية المتعارضة:
+
+kill PID
+
+ثم شغل:
+
+bench start
+
+
+أخطاء شائعة وحلول مختصرة
+-----------------------
+
+1. Address already in use
+
+السبب:
+منفذ مستخدم مسبقًا.
+
+الحل:
+افحص العملية:
+
+ss -ltnp | rg ':PORT'
+
+أو:
+
+ps -ef | rg 'redis-server'
+
+ثم أوقف العملية المتعارضة:
+
+kill PID
+
+
+2. Redis connection refused
+
+السبب:
+Redis غير شغال.
+
+الحل:
+شغل bench start أو شغل Redis مؤقتًا:
+
+redis-server config/redis_queue.conf --daemonize yes
+redis-server config/redis_cache.conf --daemonize yes
+
+
+3. الموقع لا يفتح
+
+الحل:
+تحقق من:
+
+bench start
+ss -ltnp | rg ':8001'
+hostname -I
+
+ثم افتح:
+
+http://IP:8001
+
+
+4. تغييرات Python لا تظهر
+
+الحل:
+
+bench --site site1.local clear-cache
+
+ثم أعد تشغيل bench start إذا احتجت.
+
+
+5. تغييرات JavaScript أو CSS لا تظهر
+
+الحل:
+
+bench build --app custom_erp
+bench --site site1.local clear-cache
+
+
+6. migrate بطيء جدًا
+
+الحل:
+افحص حجم fixtures:
+
+wc -l apps/custom_erp/custom_erp/fixtures/*.json
+wc -c apps/custom_erp/custom_erp/fixtures/*.json
+
+إذا المشكلة من search index:
+
+bench --site site1.local migrate --skip-search-index
+
+
+7. خطأ صلاحيات بعد تخصيص عزل الشركات
+
+السبب المحتمل:
+المستخدم لا يملك User Permission على Company.
+
+الحل:
+من ERPNext:
+User Permission -> New
+
+القيم:
+- User: المستخدم
+- Allow: Company
+- For Value: اسم الشركة
+- Apply To All Doctypes: مفعل
+
+أو من شاشة User إذا ظهر حقل Company المخصص، اختر الشركة واحفظ.
+
+
+ملاحظات مهمة
+------------
+
+1. لا تشغل redis-server يدويًا ثم تشغل bench start قبل إيقاف Redis اليدوي.
+
+2. إذا ظهر Address already in use، لا تعدل ملفات ERPNext، فقط أوقف العملية التي تستخدم المنفذ.
+
+3. قبل restore أو أي عملية خطرة، خذ backup.
+
+4. أي تخصيص جديد يجب أن يكون داخل:
+apps/custom_erp
+
+5. لا تعدل ملفات:
+apps/erpnext
+apps/frappe
+
+إلا إذا كنت تعرف تمامًا ما تفعل، لأن التحديثات قد تضيع هذه التعديلات.
+

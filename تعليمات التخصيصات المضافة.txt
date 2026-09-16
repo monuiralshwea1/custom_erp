@@ -1,0 +1,366 @@
+تعليمات التخصيصات المضافة
+==========================
+
+التطبيق:
+custom_erp
+
+الموقع الذي تم العمل عليه:
+site1.local
+
+هدف التخصيص
+-----------
+تمت إضافة تخصيص لعزل بيانات كل شركة داخل نفس نظام ERPNext، بحيث إن المستخدم المرتبط بشركة معينة لا يرى إلا بيانات شركته فقط قدر الإمكان، مثل:
+- الأصناف
+- العملاء
+- الموردين
+- المستخدمين
+- الحسابات
+- مراكز التكلفة
+- المخازن
+- الموظفين
+- المستندات والحركات التي تحتوي على حقل Company
+
+يعتمد التخصيص على صلاحيات ERPNext القياسية من نوع:
+User Permission -> Company
+
+أي مستخدم لديه User Permission على شركة معينة سيتم تقييد ظهوره وحفظه للبيانات على هذه الشركة.
+
+
+الملفات التي تمت إضافتها
+-----------------------
+
+1. custom_erp/company_isolation.py
+
+المسار الكامل:
+apps/custom_erp/custom_erp/company_isolation.py
+
+وظيفة الملف:
+هذا هو الملف الأساسي للتخصيص، ويحتوي على منطق عزل الشركات.
+
+أهم ما يقوم به:
+- قراءة الشركات المسموحة للمستخدم من User Permission.
+- تحديد هل DocType يحتوي على حقل company أصلي.
+- استخدام حقل custom_company للتخصيصات التي لا تحتوي على company أصليًا.
+- فلترة القوائم والاستعلامات حسب شركة المستخدم.
+- منع فتح أو حفظ مستند تابع لشركة غير مسموحة للمستخدم.
+- تعبئة الشركة تلقائيًا عند إنشاء مستند جديد إذا كان للمستخدم شركة واحدة فقط.
+- عند إنشاء شركة جديدة، يتم إعطاء منشئ الشركة صلاحية User Permission عليها تلقائيًا.
+- عند حفظ مستخدم وفيه custom_company، يتم إنشاء User Permission لهذا المستخدم على الشركة المحددة.
+
+الدوال المهمة داخل الملف:
+- get_allowed_companies
+  تجلب الشركات المسموحة للمستخدم من User Permission.
+
+- get_permission_query_conditions
+  تضيف شرط SQL على القوائم حتى لا تظهر إلا بيانات الشركة المسموحة.
+
+- has_permission
+  تمنع الوصول المباشر للمستند إذا كان تابعًا لشركة غير مسموحة.
+
+- apply_default_company
+  تضع الشركة تلقائيًا عند إنشاء مستند جديد إذا كان المستخدم مقيدًا بشركة واحدة.
+
+- validate_company_access
+  تتحقق عند الحفظ أن الشركة موجودة ومسموحة للمستخدم.
+
+- grant_company_to_creator
+  تعطي منشئ الشركة صلاحية عليها.
+
+- sync_user_company_permission
+  تربط المستخدم بالشركة المحددة في حقل custom_company.
+
+
+2. custom_erp/patches/setup_company_isolation.py
+
+المسار الكامل:
+apps/custom_erp/custom_erp/patches/setup_company_isolation.py
+
+وظيفة الملف:
+Patch يتم تشغيله أثناء migrate لإنشاء الحقول المطلوبة في قاعدة البيانات وتفعيل إعداد مهم.
+
+ما يقوم به:
+- إنشاء حقل custom_company من نوع Link إلى Company في DocTypes التالية:
+  - Item
+  - Customer
+  - Supplier
+  - User
+
+- تفعيل الإعداد:
+  System Settings -> apply_strict_user_permissions = 1
+
+سبب إضافة custom_company:
+بعض البيانات مثل Item وUser لا تحتوي على حقل company أساسي في ERPNext، لذلك تمت إضافة حقل مخصص حتى يمكن ربطها بشركة وعزلها.
+
+3. custom_erp/company_sequence.py
+
+المسار الكامل:
+apps/custom_erp/custom_erp/company_sequence.py
+
+وظيفة الملف:
+مسؤول عن إضافة بادئة الشركة الخاصة بكل مستند قبل إنشاء الاسم الأوتوماتيكي.
+
+ما يقوم به:
+- يقرأ نوع التسمية الأوتوماتيكية للدوكيمنت من DocType.
+- إذا كان `autoname` يبدأ بـ `naming_series:`، يضيف بادئة شركة إلى `naming_series`.
+- إذا كان `autoname` يبدأ بـ `field:...` مثل `field:item_code`، فإنه يولد قيمة الحقل باستخدام البادئة ويضعها في الحقل المطلوب.
+- يعتمد على حقل `company` أو `custom_company` داخل المستند لاستخراج الشركة.
+- يستخدم `Company.abbr` في تكوين البادئة إن وجدت.
+
+4. custom_erp/hooks.py
+
+المسار الكامل:
+apps/custom_erp/custom_erp/hooks.py
+
+ما تم تعديله:
+تم إضافة حدث `before_naming` عالمي في `doc_events`:
+- `"before_naming": "custom_erp.company_sequence.apply_company_prefix"`
+
+سبب الإضافة:
+- بدلًا من استبدال فئة المستندات الأساسية، يتم الآن تطبيق منطق البادئة قبل تسمية أي مستند.
+- هذا يمنع كسر وظائف المستندات التي تعتمد على فئات ERPNext الخاصة بها مثل `Sales Invoice` و`Delivery Note`.
+
+المستندات التي يغطيها هذا التعديل:
+- أي مستند يستخدم `autoname` من نوع `naming_series:` أو `field:<fieldname>` ويحتوي على حقل `company` أو `custom_company`.
+- المستندات الحالية التي تستفيد من هذا التعديل تشمل: Item، Purchase Invoice، Sales Invoice، Purchase Order، Sales Order، Delivery Note، Purchase Receipt، Sales Return، Purchase Return، Payment Entry، Journal Entry، Stock Entry، Stock Reconciliation، Stock Adjustment، Inventory Count.
+
+
+الخطوات لإضافة مستند جديد في المستقبل
+----------------------------------
+
+إذا أردت دعم مستند آخر بنفس آلية التسلسل لكل شركة، اتبع هذه الخطوات:
+
+1. تأكد أن المستند يستخدم `autoname` إما بـ `naming_series:` أو `field:<fieldname>`.
+2. افتح ملف `apps/custom_erp/custom_erp/hooks.py`.
+3. تأكد من وجود الحدث التالي داخل `doc_events` في `hooks.py`:
+   `"before_naming": "custom_erp.company_sequence.apply_company_prefix"`
+4. احفظ التغييرات وأعد تشغيل السيرفر إذا لزم الأمر.
+
+متى تحتاج تعديل إضافي؟
+- إذا كان DocType جديدًا يعتمد على اسم يدوي ولا يستخدم Autoname، فستحتاج إضافة منطق جديد في `custom_erp/company_sequence.py`.
+- إذا كان DocType يتطلب حقل شركة غير اسمه `company` أو `custom_company`، فعدّل `apply_company_prefix` لقراءة الحقل الصحيح.
+
+مثال عملي لإضافة DocType جديد:
+1. افتح `hooks.py`.
+2. تأكد من أن `before_naming` موجود.
+3. احفظ.
+4. جرب إنشاء مستند جديد من الشركة المناسبة.
+
+
+3. custom_erp/patches/__init__.py
+
+المسار الكامل:
+apps/custom_erp/custom_erp/patches/__init__.py
+
+وظيفة الملف:
+ملف تهيئة لحزمة patches حتى يكون مجلد patches حزمة Python واضحة.
+
+
+الملفات التي تم تعديلها
+----------------------
+
+1. custom_erp/hooks.py
+
+المسار الكامل:
+apps/custom_erp/custom_erp/hooks.py
+
+ما تم تعديله:
+تم ربط منطق العزل مع Frappe/ERPNext من خلال hooks.
+
+الإضافات المهمة:
+
+doc_events:
+- على كل DocType:
+  - before_insert -> custom_erp.company_isolation.apply_default_company
+  - validate -> custom_erp.company_isolation.validate_company_access
+
+- على Company:
+  - after_insert -> custom_erp.company_isolation.grant_company_to_creator
+
+- على User:
+  - validate -> custom_erp.company_isolation.validate_company_access
+  - on_update -> custom_erp.company_isolation.sync_user_company_permission
+
+permission_query_conditions:
+- تم ربط جميع القوائم والاستعلامات العامة بالدالة:
+  custom_erp.company_isolation.get_permission_query_conditions
+
+has_permission:
+- تم ربط فحص الصلاحية المباشر بالدالة:
+  custom_erp.company_isolation.has_permission
+
+بهذا الربط يصبح العزل مطبقًا من داخل التطبيق custom_erp بدون تعديل ملفات ERPNext الأساسية.
+
+
+2. custom_erp/patches.txt
+
+المسار الكامل:
+apps/custom_erp/custom_erp/patches.txt
+
+ما تم تعديله:
+تمت إضافة patch جديد في قسم post_model_sync:
+
+custom_erp.patches.setup_company_isolation
+
+وظيفة هذا الربط:
+عند تشغيل:
+bench --site site1.local migrate
+
+يقوم Frappe بتنفيذ patch وإنشاء حقول custom_company وتفعيل Strict User Permissions.
+
+
+الخصائص التي تمت إضافتها
+-----------------------
+
+1. عزل تلقائي حسب الشركة
+أي DocType يحتوي على حقل company يتم فلترته حسب الشركات المسموحة للمستخدم.
+
+2. دعم DocTypes لا تحتوي على company
+تمت إضافة custom_company على:
+- Item
+- Customer
+- Supplier
+- User
+
+3. تعبئة الشركة تلقائيًا
+إذا كان المستخدم لديه صلاحية على شركة واحدة فقط، يتم وضع هذه الشركة تلقائيًا في المستند الجديد.
+
+4. منع الحفظ الخاطئ
+إذا حاول المستخدم حفظ مستند على شركة غير مسموحة له، يتم منعه برسالة خطأ.
+
+5. ربط منشئ الشركة بالشركة
+عند إنشاء شركة جديدة، يتم إنشاء User Permission لمنشئها على هذه الشركة.
+
+6. ربط المستخدم بالشركة من شاشة User
+عند تحديد custom_company في المستخدم، يتم إنشاء User Permission لهذا المستخدم على الشركة المحددة.
+
+7. تفعيل Strict User Permissions
+تم تفعيل:
+apply_strict_user_permissions = 1
+
+وهذا يجعل ERPNext أكثر صرامة في تطبيق User Permissions.
+
+
+طريقة الاستخدام
+---------------
+
+1. لإنشاء شركة مستقلة:
+- أنشئ Company جديدة.
+- منشئ الشركة يحصل تلقائيًا على User Permission عليها.
+
+2. لربط مستخدم بشركة:
+- افتح User.
+- حدد الشركة في حقل Company المخصص.
+- احفظ المستخدم.
+- سيتم إنشاء User Permission تلقائيًا للمستخدم على هذه الشركة.
+
+3. لربط صنف أو عميل أو مورد بشركة:
+- افتح Item أو Customer أو Supplier.
+- حدد الشركة في حقل Company المخصص.
+- احفظ.
+
+4. للمستندات القياسية مثل Sales Invoice وPurchase Invoice وAccount وCost Center وWarehouse وEmployee:
+- يتم استخدام حقل company الأصلي الموجود في ERPNext.
+
+
+المشاكل التي واجهتنا
+-------------------
+
+1. أمر bench فشل أولًا بسبب صلاحيات sandbox
+عند تشغيل بعض أوامر bench داخل البيئة، فشل الاتصال بقاعدة البيانات بسبب قيود sandbox:
+Operation not permitted
+
+الحل:
+تم تشغيل الأوامر المطلوبة بصلاحية escalated حتى يستطيع bench الاتصال بخدمات MariaDB/Redis المحلية.
+
+
+2. Redis Queue لم يكن يعمل
+ظهر الخطأ:
+Redis Queue runs @ redis://127.0.0.1:11001
+Connection refused
+
+سبب المشكلة:
+خدمة redis_queue الخاصة بالـ bench لم تكن تعمل على المنفذ 11001.
+
+الحل:
+تم تشغيل Redis يدويًا من ملفات إعدادات bench:
+- config/redis_queue.conf
+- config/redis_cache.conf
+
+بعدها أصبح Redis يعمل على:
+- 127.0.0.1:11001
+- 127.0.0.1:13001
+
+
+3. migrate استغرق وقتًا طويلًا جدًا
+بعد وصول التحديث إلى custom_erp 100% بقي migrate يعمل بدون إخراج لفترة طويلة.
+
+سبب المشكلة الأقرب:
+استيراد fixtures كبيرة جدًا موجودة مسبقًا داخل custom_erp، خصوصًا:
+apps/custom_erp/custom_erp/fixtures/translation.json
+
+حجم الملف كبير جدًا وعدد أسطره يقارب 173 ألف سطر، وهذا جعل مرحلة sync_fixtures بطيئة جدًا.
+
+الحل:
+تم إيقاف migrate حتى لا تبقى العملية معلقة.
+وكان patch العزل قد تم تنفيذه بنجاح وتم التأكد من ذلك من Patch Log.
+
+
+4. فهرسة البحث Search Index
+أثناء migrate ظهرت محاولة لإضافة مهمة إعادة بناء فهرس البحث إلى Redis.
+
+الحل:
+بعد تشغيل Redis، تم استخدام خيار:
+bench --site site1.local migrate --skip-search-index
+
+لكن بقي البطء بسبب fixtures الكبيرة، لذلك تم إيقاف العملية بعد التأكد أن patch العزل مطبق.
+
+
+ما تم التحقق منه
+----------------
+
+تم التحقق من التالي على site1.local:
+
+1. وجود حقل:
+Item-custom_company
+
+2. وجود حقل:
+Customer-custom_company
+
+3. وجود حقل:
+Supplier-custom_company
+
+4. وجود حقل:
+User-custom_company
+
+5. نوع الحقل في Item:
+Link -> Company
+
+6. تفعيل:
+System Settings -> apply_strict_user_permissions = 1
+
+7. تسجيل patch في Patch Log:
+custom_erp.patches.setup_company_isolation
+
+8. فحص ملفات Python:
+تم فحص الملفات بالأمر:
+env/bin/python -m py_compile
+
+وكان الفحص ناجحًا بدون أخطاء.
+
+
+ملاحظات مهمة
+------------
+
+1. لم يتم تعديل أي ملف من ملفات ERPNext أو Frappe الأساسية.
+
+2. كل التخصيصات تمت داخل تطبيق:
+custom_erp
+
+3. المستخدم Administrator غير مقيد بهذا العزل.
+
+4. المستخدم الذي لا يملك User Permission على Company لن يتم تقييده بهذا التخصيص، لذلك يجب ربط المستخدمين بالشركات من خلال User Permission أو من خلال حقل Company في شاشة User.
+
+5. للحصول على عزل صحيح للأصناف والعملاء والموردين، يجب تعبئة حقل Company المخصص لهذه السجلات.
+
+6. البيانات القديمة التي لا تحتوي على شركة في custom_company تحتاج تعبئة الشركة يدويًا أو عبر سكربت لاحق إذا كانت كثيرة.
+

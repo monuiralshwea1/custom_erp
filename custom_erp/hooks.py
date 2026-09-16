@@ -45,10 +45,30 @@ fixtures = [
     "Translation"
 ]
 
+persistent_cache_keys = ["session"]
+
 doc_events = {
     "*": {
-        "refresh": "custom_erp.custom_erp.api.add_new_button.add_new_button"
-    }
+        "refresh": "custom_erp.custom_erp.api.add_new_button.add_new_button",
+        "before_insert": "custom_erp.company_isolation.apply_default_company",
+        "validate": "custom_erp.company_isolation.validate_company_access",
+        "before_naming": "custom_erp.company_sequence.apply_company_prefix",
+    },
+    "Company": {
+        "after_insert": "custom_erp.company_isolation.grant_company_to_creator",
+    },
+    "User": {
+        "validate": "custom_erp.company_isolation.validate_company_access",
+        "on_update": "custom_erp.company_isolation.sync_user_company_permission",
+    },
+}
+
+permission_query_conditions = {
+    "*": "custom_erp.company_isolation.get_permission_query_conditions",
+}
+
+has_permission = {
+    "*": "custom_erp.company_isolation.has_permission",
 }
 
 app_include_js = [
@@ -121,9 +141,6 @@ app_include_css = [
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
 
 # scheduler_events = {
 # 	"all": [
