@@ -7,3 +7,4 @@
 custom_erp.patches.setup_company_isolation
 custom_erp.patches.relax_strict_user_permissions_for_company_isolation
 custom_erp.patches.delete_orphaned_customer_link_fields
+custom_erp.patches.delete_dropped_translation_dupes
