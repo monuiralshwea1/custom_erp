@@ -74,11 +74,13 @@ has_permission = {
 app_include_js = [
     "/assets/custom_erp/js/add_new_button.js",
     "/assets/custom_erp/js/global_button.js",
-    "/assets/custom_erp/js/navigation_buttons_force.js"
+    "/assets/custom_erp/js/navigation_buttons_force.js",
+    "/assets/custom_erp/js/desk_tabs.js"
 ]
 
 app_include_css = [
-    "/assets/custom_erp/css/navigation_buttons.css"
+    "/assets/custom_erp/css/navigation_buttons.css",
+    "/assets/custom_erp/css/desk_tabs.css"
 ]
 
 # required_apps = []

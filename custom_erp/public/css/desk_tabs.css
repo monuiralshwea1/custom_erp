@@ -1,0 +1,155 @@
+/* Custom ERP — Tabbed MDI styles for ERPNext Desk
+ * Visual identity via CSS variables so the theme can be tweaked in one place.
+ */
+
+:root {
+	--dt-bar-bg: #243451; /* tab strip background (dark navy) */
+	--dt-tab-bg: #33415e; /* inactive tab (slightly lighter navy) */
+	--dt-tab-bg-hover: #3d4d6e; /* inactive tab hover */
+	--dt-tab-fg: #ffffff; /* inactive tab text */
+	--dt-active-bg: #f5df70; /* active tab (light yellow) */
+	--dt-active-fg: #26344c; /* active tab text (dark navy) */
+	--dt-separator: rgba(255, 255, 255, 0.14); /* thin dividers */
+	--dt-close-hover-bg: rgba(0, 0, 0, 0.16);
+	--dt-bar-h: 36px;
+	--dt-navbar-h: 48px; /* must match the Desk navbar height */
+	--dt-font-size: 12.5px;
+	--dt-radius: 4px;
+}
+
+#custom-erp-desk-tabs {
+	position: sticky;
+	top: var(--dt-navbar-h);
+	z-index: 1010; /* below navbar (1020), above page content */
+	background: var(--dt-bar-bg);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+	height: var(--dt-bar-h);
+	min-height: var(--dt-bar-h);
+	direction: inherit;
+}
+
+#custom-erp-desk-tabs .dt-tabs-container {
+	height: 100%;
+}
+
+#custom-erp-desk-tabs .dt-tabs-strip {
+	display: flex;
+	align-items: stretch;
+	gap: 2px;
+	height: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding-inline: 6px;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+}
+
+#custom-erp-desk-tabs .dt-tabs-strip::-webkit-scrollbar {
+	height: 6px;
+}
+
+#custom-erp-desk-tabs .dt-tabs-strip::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 3px;
+}
+
+#custom-erp-desk-tabs .dt-tab {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	flex: 0 0 auto;
+	max-width: 260px;
+	height: calc(var(--dt-bar-h) - 8px);
+	margin-block: 4px;
+	padding-inline: 10px;
+	background: var(--dt-tab-bg);
+	color: var(--dt-tab-fg);
+	border: 0;
+	border-inline-end: 1px solid var(--dt-separator);
+	border-radius: var(--dt-radius);
+	font-size: var(--dt-font-size);
+	line-height: 1.2;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+#custom-erp-desk-tabs .dt-tab:hover {
+	background: var(--dt-tab-bg-hover);
+}
+
+#custom-erp-desk-tabs .dt-tab.dt-active {
+	background: var(--dt-active-bg);
+	color: var(--dt-active-fg);
+	font-weight: 600;
+}
+
+#custom-erp-desk-tabs .dt-icon {
+	font-size: 13px;
+	line-height: 1;
+	flex: 0 0 auto;
+}
+
+#custom-erp-desk-tabs .dt-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#custom-erp-desk-tabs .dt-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	opacity: 0.92;
+	font-weight: 400;
+}
+
+#custom-erp-desk-tabs .dt-tab.dt-active .dt-name {
+	opacity: 1;
+}
+
+#custom-erp-desk-tabs .dt-close {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	margin-inline-start: 2px;
+	border-radius: 50%;
+	font-size: 14px;
+	line-height: 1;
+	opacity: 0.65;
+	flex: 0 0 auto;
+}
+
+#custom-erp-desk-tabs .dt-tab:hover .dt-close {
+	opacity: 1;
+}
+
+#custom-erp-desk-tabs .dt-close:hover {
+	background: var(--dt-close-hover-bg);
+}
+
+#custom-erp-desk-tabs .dt-tab.dt-active .dt-close:hover {
+	background: rgba(38, 52, 76, 0.15);
+}
+
+#custom-erp-desk-tabs .dt-tab:focus-visible {
+	outline: 2px solid var(--dt-active-bg);
+	outline-offset: -2px;
+}
+
+@media (max-width: 767px) {
+	:root {
+		--dt-font-size: 12px;
+	}
+	#custom-erp-desk-tabs .dt-tab {
+		max-width: 180px;
+		padding-inline: 8px;
+	}
+}
+
+@media print {
+	#custom-erp-desk-tabs {
+		display: none;
+	}
+}

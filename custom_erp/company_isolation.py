@@ -129,11 +129,19 @@ def sync_user_company_permission(doc, method=None):
 
 
 def _add_company_permission(user, company, is_default=False):
-	if frappe.db.exists(
+	existing = frappe.db.exists(
 		"User Permission",
 		{"user": user, "allow": COMPANY_LINK_DOCTYPE, "for_value": company},
-	):
+	)
+	if existing:
+		if is_default:
+			_clear_other_default_permissions(user, keep_name=existing)
+			frappe.db.set_value("User Permission", existing, "is_default", 1, update_modified=False)
+			frappe.cache.hdel("user_permissions", user)
 		return
+
+	if is_default:
+		_clear_other_default_permissions(user)
 
 	permission = frappe.get_doc(
 		{
@@ -149,6 +157,15 @@ def _add_company_permission(user, company, is_default=False):
 	permission.insert()
 
 	frappe.cache.hdel("user_permissions", user)
+
+
+def _clear_other_default_permissions(user, keep_name=None):
+	filters = {"user": user, "allow": COMPANY_LINK_DOCTYPE, "is_default": 1}
+	rows = frappe.get_all("User Permission", filters=filters, pluck="name")
+	for name in rows:
+		if keep_name and name == keep_name:
+			continue
+		frappe.db.set_value("User Permission", name, "is_default", 0, update_modified=False)
 
 
 def _set_company_defaults(user, company):
