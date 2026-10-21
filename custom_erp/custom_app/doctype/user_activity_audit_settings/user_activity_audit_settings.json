@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-20 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_general",
+  "enabled",
+  "retention_days",
+  "max_rows_per_page",
+  "section_capture",
+  "capture_document_events",
+  "capture_login_events",
+  "capture_request_events",
+  "capture_route_visits",
+  "include_native_route_history",
+  "include_native_access_log",
+  "include_native_view_log",
+  "include_native_version",
+  "route_dedupe_seconds",
+  "section_exclusions",
+  "excluded_doctypes",
+  "excluded_fields",
+  "sensitive_field_patterns"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_general",
+   "fieldtype": "Section Break",
+   "label": "General"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enable Activity Audit"
+  },
+  {
+   "default": "90",
+   "description": "عدد الأيام التي يُحتفظ فيها بالسجلات قبل التنظيف التلقائي. صفر = لا حذف تلقائي.",
+   "fieldname": "retention_days",
+   "fieldtype": "Int",
+   "label": "Retention (Days)"
+  },
+  {
+   "default": "100",
+   "fieldname": "max_rows_per_page",
+   "fieldtype": "Int",
+   "label": "Maximum Rows per Page"
+  },
+  {
+   "fieldname": "section_capture",
+   "fieldtype": "Section Break",
+   "label": "Capture"
+  },
+  {
+   "default": "1",
+   "fieldname": "capture_document_events",
+   "fieldtype": "Check",
+   "label": "Capture Document Events"
+  },
+  {
+   "default": "1",
+   "fieldname": "capture_login_events",
+   "fieldtype": "Check",
+   "label": "Capture Login / Logout Events"
+  },
+  {
+   "default": "1",
+   "fieldname": "capture_request_events",
+   "fieldtype": "Check",
+   "label": "Capture Print / Export / Download / Errors"
+  },
+  {
+   "default": "1",
+   "description": "تسجيل زيارة الواجهات على الخادم (من ترويسة Referer) مع منع التكرار المتكرر.",
+   "fieldname": "capture_route_visits",
+   "fieldtype": "Check",
+   "label": "Capture Page Route Visits"
+  },
+  {
+   "default": "1",
+   "description": "قراءة سجل المسارات الأصلي (Route History) من Frappe ودمجه في التقرير.",
+   "fieldname": "include_native_route_history",
+   "fieldtype": "Check",
+   "label": "Include Native Route History"
+  },
+  {
+   "default": "1",
+   "description": "قراءة سجل الوصول الأصلي (Access Log) من Frappe ودمجه في التقرير.",
+   "fieldname": "include_native_access_log",
+   "fieldtype": "Check",
+   "label": "Include Native Access Log"
+  },
+  {
+   "default": "1",
+   "description": "قراءة سجل المشاهدة الأصلي (View Log) من Frappe ودمجه في التقرير.",
+   "fieldname": "include_native_view_log",
+   "fieldtype": "Check",
+   "label": "Include Native View Log"
+  },
+  {
+   "default": "0",
+   "description": "دمج سجل إصدارات المستندات (Version). لا يحتوي على اسم المستخدم، لذا يُعرض كمصدر Frappe فقط.",
+   "fieldname": "include_native_version",
+   "fieldtype": "Check",
+   "label": "Include Native Version Records"
+  },
+  {
+   "default": "60",
+   "description": "الفترة بالثواني التي يُمنع فيها تكرار تسجيل نفس المسار للمستخدم نفسه.",
+   "fieldname": "route_dedupe_seconds",
+   "fieldtype": "Int",
+   "label": "Route Dedupe Window (Seconds)"
+  },
+  {
+   "fieldname": "section_exclusions",
+   "fieldtype": "Section Break",
+   "label": "Exclusions"
+  },
+  {
+   "fieldname": "excluded_doctypes",
+   "fieldtype": "Table",
+   "label": "Excluded Document Types",
+   "options": "Audit Excluded DocType"
+  },
+  {
+   "fieldname": "excluded_fields",
+   "fieldtype": "Table",
+   "label": "Excluded Fields",
+   "options": "Audit Excluded Field"
+  },
+  {
+   "default": "password, passwd, pwd, secret, token, api_key, api_secret, private_key, signature, otp, credential",
+   "fieldname": "sensitive_field_patterns",
+   "fieldtype": "Small Text",
+   "label": "Sensitive Field Patterns"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-20 16:35:00.000000",
+ "modified_by": "Administrator",
+ "module": "custom app",
+ "name": "User Activity Audit Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "write": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "role": "Audit Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0,
+ "track_seen": 0,
+ "track_views": 0
+}

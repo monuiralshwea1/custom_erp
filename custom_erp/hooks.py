@@ -53,6 +53,12 @@ doc_events = {
         "before_insert": "custom_erp.company_isolation.apply_default_company",
         "validate": "custom_erp.company_isolation.validate_company_access",
         "before_naming": "custom_erp.company_sequence.apply_company_prefix",
+        # --- User Activity Audit & Monitoring ---
+        "after_insert": "custom_erp.custom_app.audit.document_events.handle_after_insert",
+        "on_update": "custom_erp.custom_app.audit.document_events.handle_on_update",
+        "on_submit": "custom_erp.custom_app.audit.document_events.handle_on_submit",
+        "on_cancel": "custom_erp.custom_app.audit.document_events.handle_on_cancel",
+        "on_trash": "custom_erp.custom_app.audit.document_events.handle_on_trash",
     },
     "Company": {
         "after_insert": "custom_erp.company_isolation.grant_company_to_creator",
@@ -62,6 +68,43 @@ doc_events = {
         "on_update": "custom_erp.company_isolation.sync_user_company_permission",
     },
 }
+
+# --- User Activity Audit & Monitoring ---
+# سجل التدقيق يجب ألا يمنع حذف المستند المُوثَّق (مثل Activity Log و Version في Frappe)
+ignore_links_on_delete = [
+    "User Activity Audit Log",
+]
+
+# إنشاء دور المراجع وضبط الإعدادات الافتراضية بعد الترحيل
+after_migrate = [
+    "custom_erp.custom_app.audit.setup.setup",
+]
+
+# تنظيف سجلات التدقيق القديمة وفق سياسة الاحتفاظ (يومياً)
+scheduler_events = {
+    "daily": [
+        "custom_erp.custom_app.audit.tasks.purge_expired_audit_logs",
+    ],
+}
+
+# التقاط أحداث الطلبات (طباعة / تصدير / تنزيل / أخطاء / صلاحيات مرفوضة)
+after_request = [
+    "custom_erp.custom_app.audit.request_events.after_request",
+]
+
+# التقاط تسجيل الدخول والخروج (تتم إضافة هذه الدوال إلى Hooks الأصلية في Frappe
+# ولا تستبدلها، لأن Frappe يدمج قوائم الـHooks بين التطبيقات)
+on_login = [
+    "custom_erp.custom_app.audit.auth_events.on_login",
+]
+
+on_logout = [
+    "custom_erp.custom_app.audit.auth_events.on_logout",
+]
+
+on_session_creation = [
+    "custom_erp.custom_app.audit.auth_events.on_session_creation",
+]
 
 permission_query_conditions = {
     "*": "custom_erp.company_isolation.get_permission_query_conditions",
