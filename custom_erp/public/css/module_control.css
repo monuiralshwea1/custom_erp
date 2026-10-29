@@ -1,0 +1,4 @@
+/* Central Module Control Manager — small CSS helpers (UI polish only, NOT a security layer) */
+.mc-table td { direction: rtl; }
+.mc-chip { font-family: inherit; }
+#mc-control-ui .form-control { font-size: 12.5px; }

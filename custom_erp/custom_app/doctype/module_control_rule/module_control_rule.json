@@ -1,0 +1,150 @@
+{
+  "actions": [],
+  "autoname": "hash",
+  "creation": "2026-10-28 15:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "module",
+    "module_name",
+    "is_enabled",
+    "column_break_main",
+    "hide_module",
+    "block_module_access",
+    "hide_all_workspaces",
+    "column_break_actions",
+    "hide_from_search",
+    "block_direct_navigation",
+    "block_protected_apis",
+    "section_enforce",
+    "enforced_by",
+    "description"
+  ],
+  "fields": [
+    {
+      "fieldname": "module",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "الموديول (Module)",
+      "options": "Module Def",
+      "reqd": 1,
+      "search_index": 1,
+      "columns": 2
+    },
+    {
+      "description": "الاسم الداخلي الحقيقي للموديول (يُملأ تلقائياً)",
+      "fieldname": "module_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "الاسم الداخلي (Internal Name)",
+      "read_only": 1,
+      "columns": 1
+    },
+    {
+      "default": "1",
+      "fieldname": "is_enabled",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "مفعّلة (Is Enabled)",
+      "columns": 1
+    },
+    {
+      "fieldname": "column_break_main",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.is_enabled",
+      "fieldname": "hide_module",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "إخفاء من الواجهة (Hide Module)",
+      "columns": 1
+    },
+    {
+      "depends_on": "eval:doc.is_enabled",
+      "fieldname": "block_module_access",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "حظر الوصول (Block Access)",
+      "columns": 1
+    },
+    {
+      "depends_on": "eval:doc.is_enabled",
+      "fieldname": "hide_all_workspaces",
+      "fieldtype": "Check",
+      "in_list_view": 1,
+      "label": "إخفاء كل المساحات (Hide All Workspaces)",
+      "columns": 1
+    },
+    {
+      "fieldname": "column_break_actions",
+      "fieldtype": "Column Break"
+    },
+    {
+      "depends_on": "eval:doc.is_enabled",
+      "fieldname": "hide_from_search",
+      "fieldtype": "Check",
+      "label": "إخفاء من البحث (Hide From Search)"
+    },
+    {
+      "depends_on": "eval:doc.is_enabled",
+      "fieldname": "block_direct_navigation",
+      "fieldtype": "Check",
+      "label": "منع الوصول المباشر (Block Direct Navigation)"
+    },
+    {
+      "depends_on": "eval:doc.is_enabled",
+      "fieldname": "block_protected_apis",
+      "fieldtype": "Check",
+      "label": "حظر APIs المحمية (Block Protected APIs)"
+    },
+    {
+      "collapsible": 0,
+      "fieldname": "section_enforce",
+      "fieldtype": "Section Break",
+      "label": "الفرض والإشارات (Enforcement)"
+    },
+    {
+      "description": "Enforced by Custom App = قاعدة من Python لا يمكن إلغاؤها من الواجهة",
+      "fieldname": "enforced_by",
+      "fieldtype": "Small Text",
+      "in_list_view": 1,
+      "label": "مفروض بواسطة (Enforced By)",
+      "read_only": 1,
+      "columns": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "وصف (Description)"
+    }
+  ],
+  "index_web_page": 0,
+  "istable": 1,
+  "links": [],
+  "modified": "2026-10-28 15:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "custom app",
+  "name": "Module Control Rule",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "cancel": 0,
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "print": 0,
+      "read": 1,
+      "role": "System Manager",
+      "share": 0,
+      "submit": 0,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

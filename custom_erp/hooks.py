@@ -118,7 +118,8 @@ app_include_js = [
     "/assets/custom_erp/js/add_new_button.js",
     "/assets/custom_erp/js/global_button.js",
     "/assets/custom_erp/js/navigation_buttons_force.js",
-    "/assets/custom_erp/js/desk_tabs.js"
+    "/assets/custom_erp/js/desk_tabs.js",
+    "/assets/custom_erp/js/dev_gate.js"
 ]
 
 app_include_css = [
@@ -255,3 +256,96 @@ app_include_css = [
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30
 # }
+
+# ============================================================================
+# Central Module Control Manager
+# نظام مركزي لإدارة وإخفاء وتعطيل الموديولات (Central Module Control Manager)
+# الذي يضيف هذا الملف: يُدمج مع الـHooks الموجود أعلاه دون استبداله.
+# ============================================================================
+doc_events.update(
+	{
+		"Module Def": {
+			"after_insert": "custom_erp.custom_app.module_control.sync.on_module_changed",
+			"on_update": "custom_erp.custom_app.module_control.sync.on_module_changed",
+		},
+		"Workspace": {
+			"after_insert": "custom_erp.custom_app.module_control.sync.on_workspace_changed",
+			"on_update": "custom_erp.custom_app.module_control.sync.on_workspace_changed",
+		},
+		# Role Guard — منع إسناد أدوار محميّة (مثل Workspace Manager) لأي مستخدم
+		"User": {
+			"validate": [
+				"custom_erp.company_isolation.validate_company_access",
+				"custom_erp.custom_app.module_control.role_guard.validate_user_role_assignment",
+			],
+			"on_update": "custom_erp.company_isolation.sync_user_company_permission",
+		},
+		"Role Profile": {
+			"validate": "custom_erp.custom_app.module_control.role_guard.validate_role_profile_assignment",
+		},
+		"Role": {
+			"before_validate": "custom_erp.custom_app.module_control.role_guard.enforce_protected_role_disabled",
+		},
+	}
+)
+
+after_install = [
+	"custom_erp.custom_app.module_control.sync.setup_after_install",
+]
+
+after_migrate += [
+	"custom_erp.custom_app.module_control.sync.after_migrate",
+]
+
+before_request = [
+	"custom_erp.custom_app.module_control.permissions.before_request_hook",
+]
+
+boot_session = [
+	"custom_erp.custom_app.module_control.workspace_filter.boot_session_hook",
+]
+
+# NOTE: has_permission here is DOC-LEVEL (controller). Access blocking for
+# Administrator is bypassed by Frappe core itself (documented limitation).
+has_permission.update(
+	{
+		"*": "custom_erp.custom_app.module_control.permissions.has_permission_hook",
+	}
+)
+
+permission_query_conditions.update(
+	{
+		"*": "custom_erp.custom_app.module_control.permissions.query_conditions_hook",
+	}
+)
+
+# HTTP-level overrides (official hook). The Python-internal call sites
+# (boot.load_desktop_data, frappe.apps.get_apps) are additionally covered by
+# the documented module-attribute patch installed at import time below.
+override_whitelisted_methods = {
+	"frappe.desk.desktop.get_workspace_sidebar_items":
+		"custom_erp.custom_app.module_control.workspace_filter.get_workspace_sidebar_items_filtered",
+	"frappe.desk.desktop.get_desktop_page":
+		"custom_erp.custom_app.module_control.workspace_filter.get_desktop_page_filtered",
+}
+
+app_include_js += [
+	"/assets/custom_erp/js/module_control_settings.js",
+]
+
+app_include_css += [
+	"/assets/custom_erp/css/module_control.css",
+]
+
+# Install the (documented, minimal, idempotent) desktop visibility wrappers.
+try:
+	from custom_erp.custom_app.module_control.workspace_filter import ensure_desktop_patched as _mc_ensure_patch
+
+	_mc_ensure_patch()
+except Exception:
+	import traceback
+	try:
+		import frappe as _frappe
+		_frappe.log_error(traceback.format_exc()[:2000], "ModuleControl patch init")
+	except Exception:
+		pass

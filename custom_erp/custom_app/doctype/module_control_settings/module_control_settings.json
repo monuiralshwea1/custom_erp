@@ -1,0 +1,161 @@
+{
+  "__last_sync": "",
+  "actions": [],
+  "allow_copy": 0,
+  "creation": "2026-10-28 15:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "control_status_section",
+    "enabled",
+    "enable_global_workspace_filter",
+    "enable_access_blocking",
+    "column_break_state",
+    "strict_visibility_mode",
+    "enable_audit_logging",
+    "default_behavior_for_new_modules",
+    "sync_section",
+    "last_synchronization",
+    "configuration_version",
+    "known_modules_baseline",
+    "rules_section",
+    "rules",
+    "ws_rules_section",
+    "workspace_rules"
+  ],
+  "fields": [
+    {
+      "fieldname": "control_status_section",
+      "fieldtype": "Section Break",
+      "label": "حالة النظام (System State)"
+    },
+    {
+      "default": "1",
+      "description": "عند التفعيل تُطبَّق قواعد الإخفاء والحظر أدناه على جميع المستخدمين حسب الأولوية الم،تحدث في الوثائق",
+      "fieldname": "enabled",
+      "fieldtype": "Check",
+      "label": "تفعيل التحكم المركزي في الموديولات (Enable Module Control)"
+    },
+    {
+      "fieldname": "column_break_state",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.enabled",
+      "description": "إخفاء كل المساحات التي لها قواعد إخفاء من الشريط الجانبي وقوائم التنقل — يعمل لصالح جميع المستخدمين",
+      "fieldname": "enable_global_workspace_filter",
+      "fieldtype": "Check",
+      "label": "إخفاء عام للمساحات (Global Workspace Filtering)"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.enabled",
+      "description": "منع الوصول الفعلي (قراءة/كتابة/إنشاء/حذف + مسارات API) لموديولات معقّمة بالحظر",
+      "fieldname": "enable_access_blocking",
+      "fieldtype": "Check",
+      "label": "حظر الوصول الفعلي (Access Blocking)"
+    },
+    {
+      "default": "0",
+      "depends_on": "eval:doc.enable_global_workspace_filter",
+      "description": "اجعل قواعد الإخفاء سارية حتى على Administrator و Workspace Manager و System Manager",
+      "fieldname": "strict_visibility_mode",
+      "fieldtype": "Check",
+      "label": "الوضع الصارم (Strict Visibility Mode)"
+    },
+    {
+      "default": "1",
+      "fieldname": "enable_audit_logging",
+      "fieldtype": "Check",
+      "label": "سجل التدقيق (Audit Logging)"
+    },
+    {
+      "default": "Follow Config",
+      "description": "Follow Config: السلوك الافتراضي لنظام؛ Visible To Everyone: ظهور؛ Hidden By Default: إخفاء الموديولات الغامقة غير الموجودة في قاعدة القواعد",
+      "fieldname": "default_behavior_for_new_modules",
+      "fieldtype": "Select",
+      "label": "سلوك الموديولات الجديدة (Default Behavior)",
+      "options": "Follow Config\nVisible To Everyone\nHidden By Default"
+    },
+    {
+      "fieldname": "sync_section",
+      "fieldtype": "Section Break",
+      "label": "المزامنة (Sync)"
+    },
+    {
+      "fieldname": "last_synchronization",
+      "fieldtype": "Datetime",
+      "label": "آخر مزامنة (Last Sync)",
+      "read_only": 1
+    },
+    {
+      "fieldname": "column_break_sync",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "configuration_version",
+      "fieldtype": "Int",
+      "label": "رقم إصدار الإعدادات (Config Version)",
+      "read_only": 1
+    },
+    {
+      "fieldname": "known_modules_baseline",
+      "fieldtype": "Long Text",
+      "hidden": 1,
+      "label": "Known Modules Baseline",
+      "read_only": 1
+    },
+   {
+      "fieldname": "rules_section",
+      "fieldtype": "Section Break",
+      "label": "قواعد الموديولات (Module Rules)"
+    },
+    {
+      "fieldname": "rules",
+      "fieldtype": "Table",
+      "label": "كتلة القواعد (Rules)",
+      "options": "Module Control Rule"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "ws_rules_section",
+      "fieldtype": "Section Break",
+      "label": "قواعد المساحات الفردية (Workspace Rules)"
+    },
+    {
+      "fieldname": "workspace_rules",
+      "fieldtype": "Table",
+      "label": "قواعد المساحات (Workspace Rules)",
+      "options": "Workspace Control Rule"
+    }
+  ],
+  "index_web_page": 0,
+  "is_single": 1,
+  "istable": 0,
+  "issingle": 1,
+  "links": [],
+  "modified": "2026-10-28 15:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "custom app",
+  "name": "Module Control Settings",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "cancel": 0,
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "print": 0,
+      "read": 1,
+      "role": "System Manager",
+      "share": 0,
+      "submit": 0,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

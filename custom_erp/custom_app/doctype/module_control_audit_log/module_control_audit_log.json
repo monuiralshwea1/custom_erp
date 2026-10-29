@@ -1,0 +1,132 @@
+{
+  "actions": [],
+  "autoname": "hash",
+  "creation": "2026-10-28 15:00:00.000000",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "timestamp",
+    "user",
+    "source",
+    "column_break_1",
+    "target_type",
+    "target_name",
+    "status",
+    "changes_section",
+    "old_state",
+    "new_state",
+    "details"
+  ],
+  "fields": [
+    {
+      "default": "now",
+      "fieldname": "timestamp",
+      "fieldtype": "Datetime",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "الوقت (Timestamp)",
+      "columns": 2
+    },
+    {
+      "fieldname": "user",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "المستخدم (User)",
+      "options": "User",
+      "search_index": 1
+    },
+    {
+      "fieldname": "source",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "المصدر (Source)",
+      "options": "Python\nUI\nMigration\nInstall\nAuto - Triggered\nAPI\nUnknown",
+      "columns": 1
+    },
+    {
+      "fieldname": "column_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "target_type",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "نوع الهدف (Target Type)",
+      "options": "Module\nWorkspace\nSetting\nSystem",
+      "search_index": 1
+    },
+    {
+      "fieldname": "target_name",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "الهدف (Target)",
+      "search_index": 1,
+      "columns": 2
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "الحالة (Status)",
+      "options": "Success\nFailure\nInfo"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "changes_section",
+      "fieldtype": "Section Break",
+      "label": "التغييرات (Changes)"
+    },
+    {
+      "fieldname": "old_state",
+      "fieldtype": "Small Text",
+      "label": "الحالة القديمة (Old)"
+    },
+    {
+      "fieldname": "column_break_2",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "new_state",
+      "fieldtype": "Small Text",
+      "label": "الحالة الجديدة (New)"
+    },
+    {
+      "fieldname": "details",
+      "fieldtype": "Small Text",
+      "label": "تفاصيل (Details)"
+    }
+  ],
+  "index_web_page": 0,
+  "istable": 0,
+  "links": [],
+  "modified": "2026-10-28 15:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "custom app",
+  "name": "Module Control Audit Log",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "cancel": 0,
+      "create": 0,
+      "delete": 0,
+      "email": 0,
+      "print": 0,
+      "read": 1,
+      "role": "System Manager",
+      "share": 0,
+      "submit": 0,
+      "write": 0
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": [],
+  "title_field": "target_name",
+  "track_changes": 0
+}
