@@ -119,14 +119,20 @@ def ensure_admin_only_workspaces(source="Sync"):
 
 
 def _settings_doc(for_update=False):
-	if frappe.db.exists(SETTING_DOCTYPE, SETTING_DOCTYPE):
-		if for_update:
-			return frappe.get_doc(SETTING_DOCTYPE, SETTING_DOCTYPE)
-		return frappe.get_cached_doc(SETTING_DOCTYPE, SETTING_DOCTYPE)
-	return None
+	from custom_erp.custom_app.module_control.visibility import app_ready
+
+	# multi-site safety: on sites without the installed/migrated DocType this
+	# must return None silently — never raise "DocType ... غير موجود".
+	if not app_ready() or not frappe.db.exists(SETTING_DOCTYPE, SETTING_DOCTYPE):
+		return None
+	if for_update:
+		return frappe.get_doc(SETTING_DOCTYPE, SETTING_DOCTYPE)
+	return frappe.get_cached_doc(SETTING_DOCTYPE, SETTING_DOCTYPE)
 
 
 def _ensure_settings_exists():
+	from custom_erp.custom_app.module_control.visibility import reset_ready_cache
+
 	if frappe.db.exists(SETTING_DOCTYPE, SETTING_DOCTYPE):
 		return False
 	doc = frappe.get_doc(
@@ -143,11 +149,25 @@ def _ensure_settings_exists():
 	)
 	doc.insert(ignore_permissions=True)
 	frappe.db.commit()
+	# DocType now really exists → invalidate the readiness cache so the
+	# visibility/sync layers start working on this site immediately.
+	try:
+		from custom_erp.custom_app.module_control.visibility import reset_ready_cache
+
+		reset_ready_cache()
+	except Exception:
+		pass
 	return True
 
 
 def run_sync(source="Migration"):
 	"""Idempotent sync of rules with python config. Returns summary dict."""
+	from custom_erp.custom_app.module_control.visibility import app_ready
+
+	# hook handlers (after_migrate etc.) run for every site in the bench —
+	# skip silently on sites without the installed/migrated manager DocType.
+	if not app_ready():
+		return {"skipped": "site-not-ready"}
 	_ensure_settings_exists()
 	try:
 		created_ws = ensure_admin_only_workspaces(source=source)

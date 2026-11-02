@@ -18,6 +18,42 @@ from custom_erp.custom_app.module_control import config as mc_config
 
 STATE_TTL = 1800
 VERSION_CACHE_KEY = "custom_erp:module_control:data_version"
+READY_CACHE_KEY = "custom_erp:module_control:site_ready"
+READY_TTL = 600
+
+
+def app_ready():
+	"""Multi-site safety gate.
+
+	Hooks load for EVERY site in a bench (not only installed ones), so on a
+	hosting server with several sites the module must degrade to a silent
+	no-op when this site has not actually installed/migrated the app.
+	Without this gate `frappe.get_cached_doc("Module Control Settings")`
+	raises DoesNotExistError whose frappe.throw-message stays in
+	frappe.local.message_log and leaks into EVERY response ("DocType
+	Module Control Settings غير موجود" on every page).
+
+	Also redis-cached (TTL) to avoid a DB probe on every request.
+	"""
+	try:
+		if "custom_erp" not in (frappe.get_installed_apps() or []):
+			return False
+		cached = frappe.cache.get_value(READY_CACHE_KEY)
+		if cached is not None:
+			return bool(cached)
+		ready = bool(frappe.db.exists("DocType", "Module Control Settings"))
+		frappe.cache.set_value(READY_CACHE_KEY, ready, expires_in_sec=READY_TTL)
+		return ready
+	except Exception:
+		return False
+
+
+def reset_ready_cache():
+	"""Invalidate the readiness fast-path (used right after migrate/install)."""
+	try:
+		frappe.cache.delete_value(READY_CACHE_KEY)
+	except Exception:
+		pass
 
 # Doctypes that must never be blanket-blocked (system/admin operational doctypes,
 # plus the controller/managers of this system itself).
@@ -88,10 +124,20 @@ def bump_version():
 
 def build_state():
 	"""Merge all rule sources into one state dict (sets serialized as sorted lists)."""
+	# multi-site gate: silent no-op when this site doesn't have the app/migration
+	if not app_ready():
+		return _disabled_state()
 	conf = mc_config.get_conf()
 	try:
 		s = frappe.get_cached_doc("Module Control Settings")
 	except Exception:
+		# Important: DoesNotExistError was raised via frappe.throw so its Arabic
+		# message is already in the request's message_log. Clear it explicitly —
+		# otherwise the stale toast "DocType ... غير موجود" leaks into responses.
+		try:
+			frappe.clear_last_message()
+		except Exception:
+			pass
 		s = None
 
 	def sval(k, default=None):
@@ -293,8 +339,46 @@ def build_state():
 	return state
 
 
+def _disabled_state():
+	"""Full-shape, all-disabled state for sites that cannot use the manager
+	(multi-site no-op). Same keys as build_state() — no KeyError anywhere."""
+	return {
+		"enabled": False,
+		"global_filter": False,
+		"access_blocking": False,
+		"strict": False,
+		"apply_admin": False,
+		"apply_wm": False,
+		"apply_sm": False,
+		"protected_api_scope": "",
+		"hidden_modules": [],
+		"search_hidden_modules": [],
+		"blocked_modules": [],
+		"blocked_doctypes": [],
+		"blocked_pages": [],
+		"blocked_reports": [],
+		"page_owner": {},
+		"report_owner": {},
+		"hidden_workspaces": [],
+		"block_nav_workspaces": [],
+		"protected_apps": [],
+		"admin_only_workspaces": [],
+		"visibility_exempt_roles": [],
+		"py_forced_hidden": [],
+		"py_forced_hidden_ws": [],
+		"py_forced_blocked": [],
+		"workspace_rules": [],
+		"module_rules": {},
+		"enforced_by": "Custom App",
+		"default_behavior": "Follow Config",
+	}
+
+
 def get_state():
 	"""Cache-aware state getter. Keyed by data version → survives any Apply."""
+	# multi-site gate BEFORE anything touches a possibly missing DocType
+	if not app_ready():
+		return _disabled_state()
 	version = get_version()
 	key = "custom_erp:module_control:state:d{0}".format(version)
 	try:
@@ -313,7 +397,11 @@ def get_state():
 	except Exception:
 		# very defensive: visibility filtering must never take the desk down
 		frappe.logger("module_control").error(frappe.utils.get_traceback()[:3000])
-		return {"enabled": False}
+		try:
+			frappe.clear_last_message()
+		except Exception:
+			pass
+		return _disabled_state()
 
 
 __all_exports__ = [
@@ -321,6 +409,8 @@ __all_exports__ = [
 	"get_version",
 	"bump_version",
 	"build_state",
+	"app_ready",
+	"reset_ready_cache",
 ]
 
 # Convenience accessors used by other layers -------------------------------
